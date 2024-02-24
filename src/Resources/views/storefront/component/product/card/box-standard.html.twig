@@ -1,0 +1,121 @@
+{% sw_extends '@Storefront/storefront/component/product/card/box-standard.html.twig' %}
+
+{% block component_product_box_wishlist_action %}
+    {% block component_product_box_wishlist_action_blogposts_before %}{% endblock %}
+
+    {% if not(product.translated.customFields['sschreier_productblogpostsettings_isblogpost']) %}
+        {{ parent() }}
+    {% endif %}
+
+    {% block component_product_box_wishlist_action_blogposts_after %}{% endblock %}
+{% endblock %}
+
+{% block component_product_box_rating %}
+    {% block component_product_box_rating_blogposts_before %}{% endblock %}
+
+    <div class="product-rating-container{% if product.translated.customFields['sschreier_productblogpostsettings_isblogpost'] %} is-blog-post{% endif %}">
+        {% block component_product_box_rating_blogposts_inner_before %}{% endblock %}
+
+        {% if not(product.translated.customFields['sschreier_productblogpostsettings_isblogpost']) %}
+            {{ parent() }}
+        {% endif %}
+
+        {% block component_product_box_rating_blogposts_inner_after %}{% endblock %}
+    </div>
+
+    {% block component_product_box_rating_blogposts_after %}{% endblock %}
+{% endblock %}
+
+{% block component_product_box_name %}
+    {% block component_product_box_name_blogposts_before %}{% endblock %}
+
+    <div class="product-info-detail">
+        {% block component_product_box_name_blogposts_inner_before %}{% endblock %}
+
+        {{ parent() }}
+
+        {% block component_product_box_name_blogposts_releasedate %}
+            {% if config('SschreierCreateBlogPosts.config.productBoxReleaseDatePattern') == "dateTimeLongMonth" %}
+                {% set releaseDatePattern = "dd. MMMM YYYY HH:mm" %}
+            {% elseif config('SschreierCreateBlogPosts.config.productBoxReleaseDatePattern') == "dateLongMonth" %}
+                {% set releaseDatePattern = "dd. MMMM YYYY" %}
+            {% elseif config('SschreierCreateBlogPosts.config.productBoxReleaseDatePattern') == "dateTime" %}
+                {% set releaseDatePattern = "dd.MM.YYYY HH:mm" %}
+            {% elseif config('SschreierCreateBlogPosts.config.productBoxReleaseDatePattern') == "date" %}
+                {% set releaseDatePattern = "dd.MM.YYYY" %}
+            {% endif %}
+
+            {% if product.translated.customFields['sschreier_productblogpostsettings_isblogpost'] and (product.releaseDate or product.manufacturer.name) %}
+                <div class="blog-post-meta-information is-blog-post">
+                    <p>
+                        {% if product.manufacturer.name %}<b>{{ "sschreier.createblogposts.detail.textBeforeManufacturerName"|trans|striptags }}</b> {{ product.manufacturer.name}}{% if product.releaseDate %} | {% endif %}{% endif %}{% if product.releaseDate %}{{ product.releaseDate|format_datetime(pattern=releaseDatePattern, locale=app.request.locale) }}{% endif %}
+                    </p>
+            </div>
+            {% endif %}
+        {% endblock %}
+
+        {% block component_product_box_name_blogposts_description %}
+            {% if product.translated.customFields['sschreier_productblogpostsettings_isblogpost'] and product.translated.description %}
+                <div class="product-description blog-post-description">
+                    {{ product.translated.description|striptags|raw }}
+                </div>
+            {% endif %}
+        {% endblock %}
+
+        {% block component_product_box_name_blogposts_action %}
+            {% if product.translated.customFields['sschreier_productblogpostsettings_isblogpost'] %}
+                <div class="product-action is-blog-post">
+                    <div class="d-grid">
+                        <a href="{{ seoUrl('frontend.detail.page', {'productId': id}) }}"
+                           class="btn btn-light"
+                           title="{{ "sschreier.createblogposts.listing.boxProductDetails"|trans|striptags }}">
+                            {{ "sschreier.createblogposts.listing.boxProductDetails"|trans|sw_sanitize }}
+                        </a>
+                    </div>
+                </div>
+            {% endif %}
+        {% endblock %}
+    </div>
+
+    {% block component_product_box_name_blogposts_after %}{% endblock %}
+{% endblock %}
+
+{% block component_product_box_variant_characteristics %}
+    {% block component_product_box_variant_characteristics_blogposts_before %}{% endblock %}
+
+    {% if not(product.translated.customFields['sschreier_productblogpostsettings_isblogpost']) %}
+        {{ parent() }}
+    {% endif %}
+
+    {% block component_product_box_variant_characteristics_blogposts_after %}{% endblock %}
+{% endblock %}
+
+{% block component_product_box_description %}
+    {% block component_product_box_description_blogposts_before %}{% endblock %}
+
+    {% if not(product.translated.customFields['sschreier_productblogpostsettings_isblogpost']) %}
+        {{ parent() }}
+    {% endif %}
+
+    {% block component_product_box_description_blogposts_after %}{% endblock %}
+{% endblock %}
+
+{% block component_product_box_price %}
+    {% block component_product_box_price_blogposts_before %}{% endblock %}
+
+    {% if not(product.translated.customFields['sschreier_productblogpostsettings_isblogpost']) %}
+        {{ parent() }}
+    {% endif %}
+
+    {% block component_product_box_price_blogposts_after %}{% endblock %}
+{% endblock %}
+
+{% block component_product_box_action %}
+    {% block component_product_box_action_blogposts_before %}{% endblock %}
+
+    {% if not(product.translated.customFields['sschreier_productblogpostsettings_isblogpost']) %}
+        {{ parent() }}
+    {% endif %}
+
+    {% block component_product_box_action_blogposts_after %}{% endblock %}
+{% endblock %}

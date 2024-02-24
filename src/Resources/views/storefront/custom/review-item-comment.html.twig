@@ -1,0 +1,9 @@
+{% block review_item_comment_blogposts %}
+    <div class="product-detail-review-item-comment">
+        <blockquote class="blockquote">
+            <footer class="blockquote-footer">
+                {{ "sschreier.createblogposts.detail.reviewCommentLabel"|trans|sw_sanitize }}{{ review.comment }}
+            </footer>
+        </blockquote>
+    </div>
+{% endblock %}

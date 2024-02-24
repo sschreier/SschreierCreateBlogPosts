@@ -1,0 +1,9 @@
+{% block review_widget_teaser_header_blogposts %}
+    <p class="h4">
+        {% if not reviews.customerReview %}
+            {{ "sschreier.createblogposts.detail.reviewTeaserTitle"|trans|sw_sanitize }}
+        {% else %}
+            {{ "sschreier.createblogposts.detail.reviewExistsTeaserTitle"|trans|sw_sanitize }}
+        {% endif %}
+    </p>
+{% endblock %}

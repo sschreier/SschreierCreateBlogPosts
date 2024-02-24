@@ -1,0 +1,43 @@
+{
+    "name": "sschreier/sschreiercreateblogposts",
+    "description": "create blog posts",
+    "version": "1.0.0",
+    "type": "shopware-platform-plugin",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Sebastian Schreier",
+            "role": "Manufacturer"
+        }
+    ],
+    "require": {
+        "shopware/core": "~6.5.0",
+        "shopware/storefront": "~6.5.0"
+    },
+    "extra": {
+        "shopware-plugin-class": "Sschreier\\CreateBlogPosts\\SschreierCreateBlogPosts",
+        "plugin-icon": "src/Resources/config/plugin.png",
+        "copyright": "Sebastian Schreier",
+        "label": {
+            "de-DE": "Blogbeiträge erstellen",
+            "en-GB": "create blog posts"
+        },
+        "description": {
+            "de-DE": "Mit der Erweiterung können Blogbeiträge erstellt werden. Der Blogbeitrag wird dabei als Produkt erstellt und die Blog-Listenansicht als Kategorie. Der Inhalt des Blogbeitrags wird über ein Produktseiten-Layout gesteuert. Außerdem wird der Blogbeitrag automatisch in der Suche gefunden und in den Suchergebnissen mit angezeigt.",
+            "en-GB": "The extension can be used to create blog posts. The blog post is created as a product and the blog list view as a category. The content of the blog post is controlled by a product page layout. In addition, the blog post is automatically found in the search and displayed in the search results."
+        },
+        "manufacturerLink": {
+            "de-DE": "https://www.sebastianschreier.de",
+            "en-GB": "https://www.sebastianschreier.de"
+        },
+        "supportLink": {
+            "de-DE": "https://www.sebastianschreier.de",
+            "en-GB": "https://www.sebastianschreier.de"
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Sschreier\\CreateBlogPosts\\": "src/"
+        }
+    }
+}

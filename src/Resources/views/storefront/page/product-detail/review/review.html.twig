@@ -1,0 +1,158 @@
+{% sw_extends '@Storefront/storefront/page/product-detail/review/review.html.twig' %}
+
+{% block page_product_detail_review_aside %}
+    {% block page_product_detail_review_aside_blogposts_before %}{% endblock %}
+
+    {% set productId = app.request.attributes.get('productId') %}
+    {% set productArray = sschreier_get_product_data_by_product_id(productId, context) %}
+    {% set product = productArray['product'] %}
+    {% set customFields = product.translated.customFields %}
+    {% set isBlogPost = customFields['sschreier_productblogpostsettings_isblogpost'] %}
+
+    {% if isBlogPost %}
+        {% block page_product_detail_review_aside_blogposts_teaser %}
+            <div class="product-detail-review-teaser js-review-teaser">
+
+                {% block page_product_detail_review_aside_blogposts_teaser_header %}
+                    {% sw_include '@SschreierCreateBlogPosts/storefront/custom/review-widget-teaser-header.html.twig' %}
+                {% endblock %}
+
+                {% block page_product_detail_review_aside_blogposts_teaser_text %}
+                    {% sw_include '@SschreierCreateBlogPosts/storefront/custom/review-widget-teaser-text.html.twig' %}
+                {% endblock %}
+
+                {% block page_product_detail_review_aside_blogposts_teaser_button %}
+                    {% sw_include '@SschreierCreateBlogPosts/storefront/custom/review-widget-teaser-button.html.twig' %}
+                {% endblock %}
+            </div>
+        {% endblock %}
+    {% else %}
+        {% block page_product_detail_review_aside_blogposts_default_before %}{% endblock %}
+
+        {{ parent() }}
+
+        {% block page_product_detail_review_aside_blogposts_default_after %}{% endblock %}
+    {% endif %}
+
+    {% block page_product_detail_review_aside_blogposts_after %}{% endblock %}
+{% endblock %}
+
+{% block page_product_detail_review_alert %}
+    {% block page_product_detail_review_alert_blogposts_before %}{% endblock %}
+
+    {% set productId = app.request.attributes.get('productId') %}
+    {% set productArray = sschreier_get_product_data_by_product_id(productId, context) %}
+    {% set product = productArray['product'] %}
+    {% set customFields = product.translated.customFields %}
+    {% set isBlogPost = customFields['sschreier_productblogpostsettings_isblogpost'] %}
+
+    {% if isBlogPost %}
+        {% block page_product_detail_review_alert_blogposts_inner %}
+            {% sw_include '@SschreierCreateBlogPosts/storefront/custom/review-alert.html.twig' %}
+        {% endblock %}
+    {% else %}
+        {% block page_product_detail_review_alert_blogposts_default_before %}{% endblock %}
+
+        {{ parent() }}
+
+        {% block page_product_detail_review_alert_blogposts_default_after %}{% endblock %}
+    {% endif %}
+
+    {% block page_product_detail_review_alert_blogposts_after %}{% endblock %}
+{% endblock %}
+
+{% block page_product_detail_review_list_action_language %}
+    {% block page_product_detail_review_list_action_language_blogposts_before %}{% endblock %}
+
+    {% set productId = app.request.attributes.get('productId') %}
+    {% set productArray = sschreier_get_product_data_by_product_id(productId, context) %}
+    {% set product = productArray['product'] %}
+    {% set customFields = product.translated.customFields %}
+    {% set isBlogPost = customFields['sschreier_productblogpostsettings_isblogpost'] %}
+
+    {% if isBlogPost %}
+        {% block page_product_detail_review_list_action_language_blogposts_inner %}
+            {% sw_include '@SschreierCreateBlogPosts/storefront/custom/review-language.html.twig' %}
+        {% endblock %}
+    {% else %}
+        {% block page_product_detail_review_list_action_language_blogposts_default_before %}{% endblock %}
+
+        {{ parent() }}
+
+        {% block page_product_detail_review_list_action_language_blogposts_default_after %}{% endblock %}
+    {% endif %}
+
+    {% block page_product_detail_review_list_action_language_blogposts_after %}{% endblock %}
+{% endblock %}
+
+{% block page_product_detail_review_list_action_sortby %}
+    {% block page_product_detail_review_list_action_sortby_blogposts_before %}{% endblock %}
+
+    {% set productId = app.request.attributes.get('productId') %}
+    {% set productArray = sschreier_get_product_data_by_product_id(productId, context) %}
+    {% set product = productArray['product'] %}
+    {% set customFields = product.translated.customFields %}
+    {% set isBlogPost = customFields['sschreier_productblogpostsettings_isblogpost'] %}
+
+    {% if not(isBlogPost) %}
+        {% block page_product_detail_review_list_action_sortby_blogposts_default_before %}{% endblock %}
+
+        {{ parent() }}
+
+        {% block page_product_detail_review_list_action_sortby_blogposts_default_after %}{% endblock %}
+    {% endif %}
+
+    {% block page_product_detail_review_list_action_sortby_blogposts_after %}{% endblock %}
+{% endblock %}
+
+{% block page_product_detail_review_list_content %}
+    {% block page_product_detail_review_list_content_blogposts_before %}{% endblock %}
+
+    {% set productId = app.request.attributes.get('productId') %}
+    {% set productArray = sschreier_get_product_data_by_product_id(productId, context) %}
+    {% set product = productArray['product'] %}
+    {% set customFields = product.translated.customFields %}
+    {% set isBlogPost = customFields['sschreier_productblogpostsettings_isblogpost'] %}
+
+    {% if not(isBlogPost) %}
+        {% block page_product_detail_review_list_content_blogposts_default_before %}{% endblock %}
+
+        {{ parent() }}
+
+        {% block page_product_detail_review_list_content_blogposts_default_after %}{% endblock %}
+    {% else %}
+        {% block page_product_detail_review_list_content_blogposts_custom %}
+            {% for review in reviews %}
+                <div class="product-detail-review-list-content">
+                    {% sw_include '@SschreierCreateBlogPosts/storefront/custom/review-item.html.twig' %}
+                </div>
+            {% endfor %}
+        {% endblock %}
+    {% endif %}
+
+    {% block page_product_detail_review_list_content_blogposts_after %}{% endblock %}
+{% endblock %}
+
+{% block page_product_detail_review_list_empty %}
+    {% block page_product_detail_review_list_empty_blogposts_before %}{% endblock %}
+
+    {% set productId = app.request.attributes.get('productId') %}
+    {% set productArray = sschreier_get_product_data_by_product_id(productId, context) %}
+    {% set product = productArray['product'] %}
+    {% set customFields = product.translated.customFields %}
+    {% set isBlogPost = customFields['sschreier_productblogpostsettings_isblogpost'] %}
+
+    {% if isBlogPost %}
+        {% block page_product_detail_review_list_empty_blogposts_inner %}
+            {% sw_include '@SschreierCreateBlogPosts/storefront/custom/review-list-empty.html.twig' %}
+        {% endblock %}
+    {% else %}
+        {% block page_product_detail_review_list_empty_blogposts_default_before %}{% endblock %}
+
+        {{ parent() }}
+
+        {% block page_product_detail_review_list_empty_blogposts_default_after %}{% endblock %}
+    {% endif %}
+
+    {% block page_product_detail_review_list_empty_blogposts_after %}{% endblock %}
+{% endblock %}

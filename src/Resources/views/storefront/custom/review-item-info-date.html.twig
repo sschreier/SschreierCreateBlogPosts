@@ -1,0 +1,8 @@
+{% block review_item_info_date_blogposts %}
+    <div class="col-12 product-detail-review-item-author">
+        <p><b>{{ "sschreier.createblogposts.detail.reviewItemAuthor"|trans|sw_sanitize }}</b> {{ customerFirstname }} {{ customerLastname }}</p>
+    </div>
+    <div class="col-12 product-detail-review-item-date">
+        <p><b>{{ "sschreier.createblogposts.detail.reviewItemDate"|trans|sw_sanitize }}</b> {{ review.createdAt|format_date('long') }} {{ review.createdAt|format_time('short') }}</p>
+    </div>
+{% endblock %}

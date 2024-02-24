@@ -1,0 +1,33 @@
+{% sw_extends '@Storefront/storefront/page/content/product-detail.html.twig' %}
+
+{% set product = page.product %}
+{% set customFields = product.translated.customFields %}
+{% set isBlogPost = customFields['sschreier_productblogpostsettings_isblogpost'] %}
+
+{% block base_body_classes %}{% block base_body_classes_blogposts_before %}{% endblock %}{{ parent() }}{% block base_body_classes_blogposts_after %}{% endblock %}{% block base_body_classes_blogposts_custom %}{% if isBlogPost %} is-blog-post{% endif %}{% endblock %}{% endblock %}
+
+{% block cms_content %}
+    {% block cms_content_blogposts_before %}{% endblock %}
+
+    {% if isBlogPost %}
+        {% set cmsPageClasses = ('cms-page ' ~ page.cmsPage.cssClass|striptags)|trim %}
+
+        {% block cms_content_blogposts_custom %}
+            <article itemprop="article" itemscope itemtype="https://schema.org/BlogPosting">
+                <div class="{{ cmsPageClasses }}">
+                    {% block page_content_blocks %}
+                        {% sw_include "@Storefront/storefront/page/content/detail.html.twig" with {'cmsPage': page.cmsPage} %}
+                    {% endblock %}
+                </div>
+            </article>
+        {% endblock %}
+    {% else %}
+        {% block cms_content_blogposts_default_before %}{% endblock %}
+
+        {{ parent() }}
+
+        {% block cms_content_blogposts_default_after %}{% endblock %}
+    {% endif %}
+
+    {% block cms_content_blogposts_after %}{% endblock %}
+{% endblock %}

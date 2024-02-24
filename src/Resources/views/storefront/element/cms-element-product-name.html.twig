@@ -1,0 +1,26 @@
+{% sw_extends '@Storefront/storefront/element/cms-element-product-name.html.twig' %}
+
+{% block element_product_name_inner %}
+    {% block element_product_name_inner_blogposts_before %}{% endblock %}
+    {{ parent() }}
+    {% block element_product_name_inner_blogposts_after %}{% endblock %}
+
+    {% set product = page.product %}
+    {% set customFields = product.translated.customFields %}
+    {% set isBlogPost = customFields['sschreier_productblogpostsettings_isblogpost'] %}
+
+    {% if isBlogPost %}
+        {% block element_product_name_inner_blogposts_custom %}
+            <meta itemprop="headline" content="{{ element.data.content }}"/>
+
+            {% set blogPostCover = product.cover %}
+
+            {% if blogPostCover %}
+                {% set blogPostCoverMediaCollection = searchMedia([blogPostCover.mediaId], context.context) %}
+                {% set blogPostCoverMedia = blogPostCoverMediaCollection.get(blogPostCover.mediaId) %}
+
+                <meta itemprop="image" content="{{ blogPostCoverMedia.url }}"/>
+            {% endif %}
+        {% endblock %}
+    {% endif %}
+{% endblock %}

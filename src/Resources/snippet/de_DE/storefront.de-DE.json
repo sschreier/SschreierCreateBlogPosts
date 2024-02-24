@@ -1,0 +1,32 @@
+{
+    "sschreier": {
+        "createblogposts": {
+            "listing": {
+                "boxProductDetails": "Mehr lesen"
+            },
+            "detail": {
+                "textBeforeManufacturerName": "von:",
+                "tabsReview": "Kommentare anzeigen",
+                "reviewTeaserTitle": "Kommentieren Sie den Blogbeitrag!",
+                "reviewExistsTeaserTitle": "Sie haben diesen Blogbeitrag schon kommentiert!",
+                "reviewTeaserText": "Teilen Sie Ihre Meinung mit Anderen.",
+                "reviewExistsTeaserText": "Wollen Sie Ihren abgegebenen Kommentar bearbeiten?",
+                "reviewTeaserButton": "Kommentar schreiben",
+                "reviewExistsTeaserButton": "Kommentar bearbeiten",
+                "reviewTeaserButtonHide": "Kommentare anzeigen",
+                "reviewLanguageFilterLabel": "Kommentare nur in der aktuellen Sprache anzeigen.",
+                "reviewLoginDescription": "Kommentare können nur von angemeldeten Benutzern abgegeben werden. Bitte loggen Sie sich ein, oder erstellen Sie einen neuen Account.",
+                "reviewRegisterLink": "Neuer Kunde?",
+                "reviewFormContentLabel": "Ihr Kommentar",
+                "reviewFormSuccessAlert": "Vielen Dank für Ihren Kommentar. Wir werden Ihren Kommentar prüfen und ggf. freischalten. Bitte haben Sie ein wenig Geduld.",
+                "reviewFormSuccessUpdateAlert": "Vielen Dank für das Bearbeiten Ihres Kommentars. Der Kommentar wird wieder sichtbar, sobald wir Sie erneut freigeschaltet haben.",
+                "reviewFormErrorAlert": "Es ist ein Fehler aufgetreten. Bitte überprüfen Sie, ob alle Felder richtig ausgefüllt wurden.",
+                "reviewNotPublicYetAlert": "Ihr Kommentar wurde noch nicht freigeschaltet",
+                "reviewListEmpty": "Keine Kommentare gefunden. Teilen Sie Ihre Meinung mit anderen.",
+                "reviewItemAuthor": "Von:",
+                "reviewItemDate": "Am:",
+                "reviewCommentLabel": "Unser Kommentar: "
+            }
+        }
+    }
+}

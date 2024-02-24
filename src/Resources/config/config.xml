@@ -1,0 +1,342 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/shopware/platform/master/src/Core/System/SystemConfig/Schema/config.xsd">
+    <card>
+        <title>Settings for the blog list view</title>
+        <title lang="de-DE">Einstellungen für die Blog-Listenansicht</title>
+
+        <input-field type="single-select">
+            <name>productBoxMobileNumberProductBoxesSideBySide</name>
+            <label>number of side by side boxes in mobile view</label>
+            <label lang="de-DE">Anzahl an nebeneinander platzierten Kacheln in der mobilen Ansicht</label>
+            <options>
+                <option>
+                    <id>1</id>
+                    <name>1</name>
+                    <name lang="de-DE">1</name>
+                </option>
+                <option>
+                    <id>2</id>
+                    <name>2</name>
+                    <name lang="de-DE">2</name>
+                </option>
+            </options>
+            <defaultValue>1</defaultValue>
+        </input-field>
+
+        <input-field type="single-select">
+            <name>productBoxTabletNumberProductBoxesSideBySide</name>
+            <label>number of side by side boxes in tablet view</label>
+            <label lang="de-DE">Anzahl an nebeneinander platzierten Kacheln in der Tablet-Ansicht</label>
+            <options>
+                <option>
+                    <id>1</id>
+                    <name>1</name>
+                    <name lang="de-DE">1</name>
+                </option>
+                <option>
+                    <id>3</id>
+                    <name>3</name>
+                    <name lang="de-DE">3</name>
+                </option>
+            </options>
+            <defaultValue>1</defaultValue>
+        </input-field>
+
+        <input-field type="single-select">
+            <name>productBoxDesktopNumberProductBoxesSideBySide</name>
+            <label>number of side by side boxes in desktop view</label>
+            <label lang="de-DE">Anzahl an nebeneinander platzierten Kacheln in der Desktop-Ansicht</label>
+            <options>
+                <option>
+                    <id>1</id>
+                    <name>1</name>
+                    <name lang="de-DE">1</name>
+                </option>
+                <option>
+                    <id>4</id>
+                    <name>4</name>
+                    <name lang="de-DE">4</name>
+                </option>
+            </options>
+            <defaultValue>1</defaultValue>
+        </input-field>
+
+        <input-field type="single-select">
+            <name>productBoxReleaseDatePattern</name>
+            <label>release date format</label>
+            <label lang="de-DE">Format des Veröffentlichungsdatums</label>
+            <options>
+                <option>
+                    <id>dateTimeLongMonth</id>
+                    <name>date and time with written out month names</name>
+                    <name lang="de-DE">Datum und Uhrzeit mit ausgeschriebenen Monatsnamen</name>
+                </option>
+                <option>
+                    <id>dateLongMonth</id>
+                    <name>date with written out month names</name>
+                    <name lang="de-DE">Datum mit ausgeschriebenen Monatsnamen</name>
+                </option>
+                <option>
+                    <id>dateTime</id>
+                    <name>date and time in short form</name>
+                    <name lang="de-DE">Datum und Uhrzeit in Kurzform</name>
+                </option>
+                <option>
+                    <id>date</id>
+                    <name>date in short form</name>
+                    <name lang="de-DE">Datum in Kurzform</name>
+                </option>
+            </options>
+            <defaultValue>dateTimeLongMonth</defaultValue>
+        </input-field>
+
+        <component name="sw-snippet-field">
+            <name>listingBoxProductDetailsSnippetName</name>
+            <label>text of the read more button for the blog posts</label>
+            <label lang="de-DE">Text der mehr lesen-Schaltfläche für die Blogbeiträge</label>
+            <snippet>sschreier.createblogposts.listing.boxProductDetails</snippet>
+            <helpText>click on the globe to edit the translations</helpText>
+            <helpText lang="de-DE">Klicke auf den Globus, um die Übersetzung zu bearbeiten</helpText>
+        </component>
+    </card>
+
+    <card>
+        <title>Settings for the search results</title>
+        <title lang="de-DE">Einstellungen für die Suchergebnisse</title>
+
+        <input-field type="bool">
+            <name>searchSuggestShowReadMoreButtonForBlogPosts</name>
+            <label>show read more button for the blog posts</label>
+            <label lang="de-DE">Mehr lesen-Schaltfläche für die Blogbeiträge anzeigen</label>
+            <defaultValue>true</defaultValue>
+        </input-field>
+    </card>
+
+    <card>
+        <title>Settings for the blog post detail page</title>
+        <title lang="de-DE">Einstellungen für die Blogbeitragsdetailseite</title>
+
+        <input-field type="single-select">
+            <name>productDetailReleaseDatePattern</name>
+            <label>release date format</label>
+            <label lang="de-DE">Format des Veröffentlichungsdatums</label>
+            <options>
+                <option>
+                    <id>dateTimeLongMonth</id>
+                    <name>date and time with written out month names</name>
+                    <name lang="de-DE">Datum und Uhrzeit mit ausgeschriebenen Monatsnamen</name>
+                </option>
+                <option>
+                    <id>dateLongMonth</id>
+                    <name>date with written out month names</name>
+                    <name lang="de-DE">Datum mit ausgeschriebenen Monatsnamen</name>
+                </option>
+                <option>
+                    <id>dateTime</id>
+                    <name>date and time in short form</name>
+                    <name lang="de-DE">Datum und Uhrzeit in Kurzform</name>
+                </option>
+                <option>
+                    <id>date</id>
+                    <name>date in short form</name>
+                    <name lang="de-DE">Datum in Kurzform</name>
+                </option>
+            </options>
+            <defaultValue>dateTimeLongMonth</defaultValue>
+        </input-field>
+    </card>
+
+    <card>
+        <title>Settings for the comment area on the blog post detail page</title>
+        <title lang="de-DE">Einstellungen für den Kommentarbereich auf der Blogbeitragsdetailseite</title>
+
+        <component name="sw-snippet-field">
+            <name>detailTextBeforeManufacturerNameSnippetName</name>
+            <label>text before the name of the author</label>
+            <label lang="de-DE">Text vor dem Autorennamen</label>
+            <snippet>sschreier.createblogposts.detail.textBeforeManufacturerName</snippet>
+            <helpText>click on the globe to edit the translations</helpText>
+            <helpText lang="de-DE">Klicke auf den Globus, um die Übersetzung zu bearbeiten</helpText>
+        </component>
+
+        <component name="sw-snippet-field">
+            <name>detailTabsReviewSnippetName</name>
+            <label>text of the tab</label>
+            <label lang="de-DE">Text des Tabs</label>
+            <snippet>sschreier.createblogposts.detail.tabsReview</snippet>
+            <helpText>click on the globe to edit the translations</helpText>
+            <helpText lang="de-DE">Klicke auf den Globus, um die Übersetzung zu bearbeiten</helpText>
+        </component>
+
+        <component name="sw-snippet-field">
+            <name>detailReviewTeaserTitleSnippetName</name>
+            <label>text of the title of the teaser</label>
+            <label lang="de-DE">Text des Titels des Teasers</label>
+            <snippet>sschreier.createblogposts.detail.reviewTeaserTitle</snippet>
+            <helpText>click on the globe to edit the translations</helpText>
+            <helpText lang="de-DE">Klicke auf den Globus, um die Übersetzung zu bearbeiten</helpText>
+        </component>
+
+        <component name="sw-snippet-field">
+            <name>detailReviewExistsTeaserTitleSnippetName</name>
+            <label>text of the title of the teaser if a comment has already been made</label>
+            <label lang="de-DE">Text des Titels des Teasers, wenn bereits ein Kommentar abgegeben wurde</label>
+            <snippet>sschreier.createblogposts.detail.reviewExistsTeaserTitle</snippet>
+            <helpText>click on the globe to edit the translations</helpText>
+            <helpText lang="de-DE">Klicke auf den Globus, um die Übersetzung zu bearbeiten</helpText>
+        </component>
+
+        <component name="sw-snippet-field">
+            <name>detailReviewTeaserTextSnippetName</name>
+            <label>text of the text of the teaser</label>
+            <label lang="de-DE">Text des Teasertextes</label>
+            <snippet>sschreier.createblogposts.detail.reviewTeaserText</snippet>
+            <helpText>click on the globe to edit the translations</helpText>
+            <helpText lang="de-DE">Klicke auf den Globus, um die Übersetzung zu bearbeiten</helpText>
+        </component>
+
+        <component name="sw-snippet-field">
+            <name>detailReviewExistsTeaserTextSnippetName</name>
+            <label>text of the text of the teaser if a comment has already been made</label>
+            <label lang="de-DE">Text des Teasertextes, wenn bereits ein Kommentar abgegeben wurde</label>
+            <snippet>sschreier.createblogposts.detail.reviewExistsTeaserText</snippet>
+            <helpText>click on the globe to edit the translations</helpText>
+            <helpText lang="de-DE">Klicke auf den Globus, um die Übersetzung zu bearbeiten</helpText>
+        </component>
+
+        <component name="sw-snippet-field">
+            <name>detailReviewTeaserButtonSnippetName</name>
+            <label>text of the button to write a comment</label>
+            <label lang="de-DE">Text der Schaltfläche zum Schreiben eines Kommentars</label>
+            <snippet>sschreier.createblogposts.detail.reviewTeaserButton</snippet>
+            <helpText>click on the globe to edit the translations</helpText>
+            <helpText lang="de-DE">Klicke auf den Globus, um die Übersetzung zu bearbeiten</helpText>
+        </component>
+
+        <component name="sw-snippet-field">
+            <name>detailReviewExistsTeaserButtonSnippetName</name>
+            <label>text of the button to edit a comment</label>
+            <label lang="de-DE">Text der Schaltfläche zum Bearbeiten eines Kommentars</label>
+            <snippet>sschreier.createblogposts.detail.reviewExistsTeaserButton</snippet>
+            <helpText>click on the globe to edit the translations</helpText>
+            <helpText lang="de-DE">Klicke auf den Globus, um die Übersetzung zu bearbeiten</helpText>
+        </component>
+
+        <component name="sw-snippet-field">
+            <name>detailReviewTeaserButtonHideSnippetName</name>
+            <label>text of the button to show the comments</label>
+            <label lang="de-DE">Text der Schaltfläche zum Anzeigen der Kommentare</label>
+            <snippet>sschreier.createblogposts.detail.reviewTeaserButtonHide</snippet>
+            <helpText>click on the globe to edit the translations</helpText>
+            <helpText lang="de-DE">Klicke auf den Globus, um die Übersetzung zu bearbeiten</helpText>
+        </component>
+
+        <component name="sw-snippet-field">
+            <name>detailReviewLanguageFilterLabelSnippetName</name>
+            <label>text of the switch for displaying comments in the current language</label>
+            <label lang="de-DE">Text des Schalters für die Anzeige der Kommentare in der aktuellen Sprache</label>
+            <snippet>sschreier.createblogposts.detail.reviewLanguageFilterLabel</snippet>
+            <helpText>click on the globe to edit the translations</helpText>
+            <helpText lang="de-DE">Klicke auf den Globus, um die Übersetzung zu bearbeiten</helpText>
+        </component>
+
+        <component name="sw-snippet-field">
+            <name>detailReviewLoginDescriptionSnippetName</name>
+            <label>text of the description on the login form</label>
+            <label lang="de-DE">Text der Beschreibung beim Anmeldeformular</label>
+            <snippet>sschreier.createblogposts.detail.reviewLoginDescription</snippet>
+            <helpText>click on the globe to edit the translations</helpText>
+            <helpText lang="de-DE">Klicke auf den Globus, um die Übersetzung zu bearbeiten</helpText>
+        </component>
+
+        <component name="sw-snippet-field">
+            <name>detailReviewRegisterLinkSnippetName</name>
+            <label>text of the link for new customers on the login form</label>
+            <label lang="de-DE">Text des Links für neue Kunden beim Anmeldeformular</label>
+            <snippet>sschreier.createblogposts.detail.reviewRegisterLink</snippet>
+            <helpText>click on the globe to edit the translations</helpText>
+            <helpText lang="de-DE">Klicke auf den Globus, um die Übersetzung zu bearbeiten</helpText>
+        </component>
+
+        <component name="sw-snippet-field">
+            <name>detailReviewFormContentLabelSnippetName</name>
+            <label>text of the label of the comment input field</label>
+            <label lang="de-DE">Text der Beschriftung des Kommentar-Eingabfeldes</label>
+            <snippet>sschreier.createblogposts.detail.reviewFormContentLabel</snippet>
+            <helpText>click on the globe to edit the translations</helpText>
+            <helpText lang="de-DE">Klicke auf den Globus, um die Übersetzung zu bearbeiten</helpText>
+        </component>
+
+        <component name="sw-snippet-field">
+            <name>detailReviewFormSuccessAlertSnippetName</name>
+            <label>text of the success message after the comment has been submitted</label>
+            <label lang="de-DE">Text der Erfolgsmeldung, nachdem der Kommentar abgegeben wurde</label>
+            <snippet>sschreier.createblogposts.detail.reviewFormSuccessAlert</snippet>
+            <helpText>click on the globe to edit the translations</helpText>
+            <helpText lang="de-DE">Klicke auf den Globus, um die Übersetzung zu bearbeiten</helpText>
+        </component>
+
+        <component name="sw-snippet-field">
+            <name>detailReviewFormSuccessUpdateAlertSnippetName</name>
+            <label>text of the success message after the comment has been changed</label>
+            <label lang="de-DE">Text der Erfolgsmeldung, nachdem der Kommentar geändert wurde</label>
+            <snippet>sschreier.createblogposts.detail.reviewFormSuccessUpdateAlert</snippet>
+            <helpText>click on the globe to edit the translations</helpText>
+            <helpText lang="de-DE">Klicke auf den Globus, um die Übersetzung zu bearbeiten</helpText>
+        </component>
+
+        <component name="sw-snippet-field">
+            <name>detailReviewFormErrorAlertSnippetName</name>
+            <label>text of the error message if the comment could not be saved</label>
+            <label lang="de-DE">Text der Fehlermeldung, falls der Kommentar nicht gespeichert werden konnte</label>
+            <snippet>sschreier.createblogposts.detail.reviewFormErrorAlert</snippet>
+            <helpText>click on the globe to edit the translations</helpText>
+            <helpText lang="de-DE">Klicke auf den Globus, um die Übersetzung zu bearbeiten</helpText>
+        </component>
+
+        <component name="sw-snippet-field">
+            <name>detailReviewNotPublicYetAlertSnippetName</name>
+            <label>text of the info message that the comment has not yet been approved</label>
+            <label lang="de-DE">Text der Hinweismeldung, dass der Kommentar noch nicht freigeschaltet wurde</label>
+            <snippet>sschreier.createblogposts.detail.reviewNotPublicYetAlert</snippet>
+            <helpText>click on the globe to edit the translations</helpText>
+            <helpText lang="de-DE">Klicke auf den Globus, um die Übersetzung zu bearbeiten</helpText>
+        </component>
+
+        <component name="sw-snippet-field">
+            <name>detailReviewListEmptySnippetName</name>
+            <label>text of the info message that there are no comments yet</label>
+            <label lang="de-DE">Text der Hinweismeldung, dass noch keine Kommentare vorhanden sind</label>
+            <snippet>sschreier.createblogposts.detail.reviewListEmpty</snippet>
+            <helpText>click on the globe to edit the translations</helpText>
+            <helpText lang="de-DE">Klicke auf den Globus, um die Übersetzung zu bearbeiten</helpText>
+        </component>
+
+        <component name="sw-snippet-field">
+            <name>detailReviewItemAuthorSnippetName</name>
+            <label>text before the author of a comment</label>
+            <label lang="de-DE">Text vor dem Autor eines Kommentars</label>
+            <snippet>sschreier.createblogposts.detail.reviewItemAuthor</snippet>
+            <helpText>click on the globe to edit the translations</helpText>
+            <helpText lang="de-DE">Klicke auf den Globus, um die Übersetzung zu bearbeiten</helpText>
+        </component>
+
+        <component name="sw-snippet-field">
+            <name>detailReviewItemDateSnippetName</name>
+            <label>text before the date of a comment</label>
+            <label lang="de-DE">Text vor dem Datum eines Kommentars</label>
+            <snippet>sschreier.createblogposts.detail.reviewItemDate</snippet>
+            <helpText>click on the globe to edit the translations</helpText>
+            <helpText lang="de-DE">Klicke auf den Globus, um die Übersetzung zu bearbeiten</helpText>
+        </component>
+
+        <component name="sw-snippet-field">
+            <name>detailReviewCommentLabelSnippetName</name>
+            <label>text before replying to a comment</label>
+            <label lang="de-DE">Text vor der Antwort zu einem Kommentar</label>
+            <snippet>sschreier.createblogposts.detail.reviewCommentLabel</snippet>
+            <helpText>click on the globe to edit the translations</helpText>
+            <helpText lang="de-DE">Klicke auf den Globus, um die Übersetzung zu bearbeiten</helpText>
+        </component>
+    </card>
+</config>

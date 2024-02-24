@@ -1,0 +1,23 @@
+{% sw_extends '@Storefront/storefront/layout/header/search-suggest.html.twig' %}
+
+{% block layout_search_suggest_result_price %}
+    {% block layout_search_suggest_result_price_blogposts_before %}{% endblock %}
+
+    {% if not(product.translated.customFields['sschreier_productblogpostsettings_isblogpost']) %}
+        {% block layout_search_suggest_result_price_blogposts_default_before %}{% endblock %}
+
+        {{ parent() }}
+
+        {% block layout_search_suggest_result_price_blogposts_default_after %}{% endblock %}
+    {% else %}
+        {% block layout_search_suggest_result_price_blogposts_custom %}
+            {% if config('SschreierCreateBlogPosts.config.searchSuggestShowReadMoreButtonForBlogPosts') %}
+                <div class="col-auto search-suggest-product-price">
+                    {{ "sschreier.createblogposts.listing.boxProductDetails"|trans|sw_sanitize }}
+                </div>
+            {% endif %}
+        {% endblock %}
+    {% endif %}
+
+    {% block layout_search_suggest_result_price_blogposts_after %}{% endblock %}
+{% endblock %}

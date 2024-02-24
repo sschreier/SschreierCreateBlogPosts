@@ -1,0 +1,49 @@
+{% sw_extends '@Storefront/storefront/page/product-detail/review/review-form.html.twig' %}
+
+{% block page_product_detail_review_form_rating %}
+    {% block page_product_detail_review_form_rating_blogposts_before %}{% endblock %}
+
+    {% set productId = app.request.attributes.get('productId') %}
+    {% set productArray = sschreier_get_product_data_by_product_id(productId, context) %}
+    {% set product = productArray['product'] %}
+    {% set customFields = product.translated.customFields %}
+    {% set isBlogPost = customFields['sschreier_productblogpostsettings_isblogpost'] %}
+
+    {% if isBlogPost %}
+        {% block page_product_detail_review_form_rating_blogposts_custom %}
+            {% sw_include '@SschreierCreateBlogPosts/storefront/custom/review-form-rating.html.twig' %}
+        {% endblock %}
+    {% else %}
+        {% block page_product_detail_review_form_rating_blogposts_default_before %}{% endblock %}
+
+        {{ parent() }}
+
+        {% block page_product_detail_review_form_rating_blogposts_default_after %}{% endblock %}
+    {% endif %}
+
+    {% block page_product_detail_review_form_rating_blogposts_after %}{% endblock %}
+{% endblock %}
+
+{% block page_product_detail_review_form_content_label %}
+    {% block page_product_detail_review_form_content_label_blogposts_before %}{% endblock %}
+
+    {% set productId = app.request.attributes.get('productId') %}
+    {% set productArray = sschreier_get_product_data_by_product_id(productId, context) %}
+    {% set product = productArray['product'] %}
+    {% set customFields = product.translated.customFields %}
+    {% set isBlogPost = customFields['sschreier_productblogpostsettings_isblogpost'] %}
+
+    {% if isBlogPost %}
+        {% block page_product_detail_review_form_content_label_blogposts_custom %}
+            {% sw_include '@SschreierCreateBlogPosts/storefront/custom/review-form-content-label.html.twig' %}
+        {% endblock %}
+    {% else %}
+        {% block page_product_detail_review_form_content_label_blogposts_default_before %}{% endblock %}
+
+        {{ parent() }}
+
+        {% block page_product_detail_review_form_content_label_blogposts_default_after %}{% endblock %}
+    {% endif %}
+
+    {% block page_product_detail_review_form_content_label_blogposts_after %}{% endblock %}
+{% endblock %}

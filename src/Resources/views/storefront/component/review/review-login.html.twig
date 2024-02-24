@@ -1,0 +1,23 @@
+{% sw_extends '@Storefront/storefront/component/review/review-login.html.twig' %}
+
+{% block component_account_login_form_description %}
+    {% block component_account_login_form_description_blogposts_before %}{% endblock %}
+
+    {% set product = page.product %}
+    {% set customFields = product.translated.customFields %}
+    {% set isBlogPost = customFields['sschreier_productblogpostsettings_isblogpost'] %}
+
+    {% if isBlogPost %}
+        {% block component_account_login_form_description_blogposts_custom %}
+            {% sw_include '@SschreierCreateBlogPosts/storefront/custom/review-login-form-description.html.twig' %}
+        {% endblock %}
+    {% else %}
+        {% block component_account_login_form_description_blogposts_default_before %}{% endblock %}
+
+        {{ parent() }}
+
+        {% block component_account_login_form_description_blogposts_default_after %}{% endblock %}
+    {% endif %}
+
+    {% block component_account_login_form_description_blogposts_after %}{% endblock %}
+{% endblock %}

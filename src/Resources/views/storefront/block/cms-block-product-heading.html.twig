@@ -1,0 +1,64 @@
+{% sw_extends '@Storefront/storefront/block/cms-block-product-heading.html.twig' %}
+
+{% block block_product_heading %}
+    {% block block_product_heading_blogposts_before %}{% endblock %}
+    {{ parent() }}
+    {% block block_product_heading_blogposts_after %}{% endblock %}
+
+    {% set product = page.product %}
+    {% set customFields = product.translated.customFields %}
+    {% set isBlogPost = customFields['sschreier_productblogpostsettings_isblogpost'] %}
+
+    {% if isBlogPost %}
+        {% set manufacturer = block.slots.getSlot('right').data.manufacturer %}
+        {% set manufacturerName = manufacturer.translated.name %}
+        {% set manufacturerLink = manufacturer.link %}
+
+        {% block block_product_heading_blogposts_custom %}
+            {% if config('SschreierCreateBlogPosts.config.productDetailReleaseDatePattern') == "dateTimeLongMonth" %}
+                {% set releaseDatePattern = "dd. MMMM YYYY HH:mm" %}
+            {% elseif config('SschreierCreateBlogPosts.config.productDetailReleaseDatePattern') == "dateLongMonth" %}
+                {% set releaseDatePattern = "dd. MMMM YYYY" %}
+            {% elseif config('SschreierCreateBlogPosts.config.productDetailReleaseDatePattern') == "dateTime" %}
+                {% set releaseDatePattern = "dd.MM.YYYY HH:mm" %}
+            {% elseif config('SschreierCreateBlogPosts.config.productDetailReleaseDatePattern') == "date" %}
+                {% set releaseDatePattern = "dd.MM.YYYY" %}
+            {% endif %}
+
+            <div class="row" data-cms-element-id="{{ block.slots.getSlot('left').id }}">
+                <div class="col blog-post-heading-meta-information">
+                    {% if manufacturerName %}
+                        <b>{{ "sschreier.createblogposts.detail.textBeforeManufacturerName"|trans|striptags }}</b>
+                        <span itemprop="author" itemscope itemtype="https://schema.org/Person">
+                            <span itemprop="name">{{ manufacturerName}}</span>
+                            {% if manufacturerLink %}<meta itemprop="url" content="{{ manufacturerLink }}"/>{% endif %}
+                        </span>
+                        {% if page.product.releaseDate %} | {% endif %}
+                    {% endif %}
+                    {% if page.product.releaseDate %}
+                        {{ page.product.releaseDate|format_datetime(pattern=releaseDatePattern, locale=app.request.locale) }}
+                        <meta itemprop="datePublished" content="{{ page.product.releaseDate|date("c") }}"/>
+                    {% endif %}
+                </div>
+            </div>
+        {% endblock %}
+    {% endif %}
+{% endblock %}
+
+{% block block_product_heading_product_manufacturer_logo_element %}
+    {% block block_product_heading_product_manufacturer_logo_element_blogposts_before %}{% endblock %}
+
+    {% set product = page.product %}
+    {% set customFields = product.translated.customFields %}
+    {% set isBlogPost = customFields['sschreier_productblogpostsettings_isblogpost'] %}
+
+    {% if not(isBlogPost) %}
+        {% block block_product_heading_product_manufacturer_logo_element_blogposts_default_before %}{% endblock %}
+
+        {{ parent() }}
+
+        {% block block_product_heading_product_manufacturer_logo_element_blogposts_default_after %}{% endblock %}
+    {% endif %}
+
+    {% block block_product_heading_product_manufacturer_logo_element_blogposts_after %}{% endblock %}
+{% endblock %}
