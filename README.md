@@ -91,6 +91,18 @@ An extension to _create blog posts_. The blog post is _created as a product_ and
 - select the number of side by side product boxes in desktop view
 - select the release date format
 - set the text of the read more button for the blog posts via snippet
+- select, if the teaser images of the blog posts should be shown
+- set the background color of the area that will be displayed if no teaser image has been assigned
+- set the opacity value of the background color of the area that will be displayed if no teaser image has been assigned
+- select the alignment of the content of the area that will be displayed if no teaser image has been assigned
+- set the padding value in pixels of the area that will be displayed if no teaser image has been assigned
+- set the color of the headline in the area that will be displayed if no teaser image has been assigned
+- set the font size of the headline in the area that will be displayed if no teaser image has been assigned
+- set the line height of the headline in the area that will be displayed if no teaser image has been assigned
+- set the color of the text in the area that will be displayed if no teaser image has been assigned
+- set the font size of the text in the area that will be displayed if no teaser image has been assigned
+- set the line height of the text in the area that will be displayed if no teaser image has been assigned
+- set the number of lines from which the text will be truncated
 
 ## Possible Configurations for the search results
 - select, if the read more button for the blog posts should be shown
@@ -192,7 +204,7 @@ bin/console plugin:install --activate SschreierCreateBlogPosts
 
 ## Images
 
-### blog category
+### blog category without teaser images
 
 ![blog category](https://www.sebastianschreier.de/plugins/SschreierCreateBlogPosts/SschreierCreateBlogPosts-Image1.jpg)
 
@@ -216,11 +228,11 @@ bin/console plugin:install --activate SschreierCreateBlogPosts
 
 ![comment area on the blog post detail page](https://www.sebastianschreier.de/plugins/SschreierCreateBlogPosts/SschreierCreateBlogPosts-Image6.jpg)
 
-### blog category
+### blog category without release dates and authors
 
 ![blog category](https://www.sebastianschreier.de/plugins/SschreierCreateBlogPosts/SschreierCreateBlogPosts-Image7.jpg)
 
-### blog post detail page
+### blog post detail page without release date and author
 
 ![blog post detail page](https://www.sebastianschreier.de/plugins/SschreierCreateBlogPosts/SschreierCreateBlogPosts-Image8.jpg)
 
@@ -248,10 +260,22 @@ bin/console plugin:install --activate SschreierCreateBlogPosts
 
 ![extension configuration part 6](https://www.sebastianschreier.de/plugins/SschreierCreateBlogPosts/SschreierCreateBlogPosts-Image14.jpg)
 
+### extension configuration part 7
+
+![extension configuration part 7](https://www.sebastianschreier.de/plugins/SschreierCreateBlogPosts/SschreierCreateBlogPosts-Image15.jpg)
+
+### extension configuration part 8
+
+![extension configuration part 8](https://www.sebastianschreier.de/plugins/SschreierCreateBlogPosts/SschreierCreateBlogPosts-Image16.jpg)
+
+### extension configuration part 9
+
+![extension configuration part 9](https://www.sebastianschreier.de/plugins/SschreierCreateBlogPosts/SschreierCreateBlogPosts-Image17.jpg)
+
 ### category custom field in shopware administration
 
-![category custom field in shopware administration](https://www.sebastianschreier.de/plugins/SschreierCreateBlogPosts/SschreierCreateBlogPosts-Image15.jpg)
+![category custom field in shopware administration](https://www.sebastianschreier.de/plugins/SschreierCreateBlogPosts/SschreierCreateBlogPosts-Image18.jpg)
 
 ### product custom field in shopware administration
 
-![product custom field in shopware administration](https://www.sebastianschreier.de/plugins/SschreierCreateBlogPosts/SschreierCreateBlogPosts-Image16.jpg)
+![product custom field in shopware administration](https://www.sebastianschreier.de/plugins/SschreierCreateBlogPosts/SschreierCreateBlogPosts-Image19.jpg)

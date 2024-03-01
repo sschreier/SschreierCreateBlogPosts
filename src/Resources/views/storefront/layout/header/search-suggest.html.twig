@@ -1,5 +1,42 @@
 {% sw_extends '@Storefront/storefront/layout/header/search-suggest.html.twig' %}
 
+{% block layout_search_suggest_result_image %}
+    {% block layout_search_suggest_result_image_blogposts_before %}{% endblock %}
+
+    {% if not(product.translated.customFields['sschreier_productblogpostsettings_isblogpost']) %}
+        {% block layout_search_suggest_result_image_blogposts_default_before %}{% endblock %}
+
+        {{ parent() }}
+
+        {% block layout_search_suggest_result_image_blogposts_default_after %}{% endblock %}
+    {% else %}
+        {% if not(product.cover.media.url) %}
+            {% set productCustomFieldHeadlineNoTeaserImage = product.translated.customFields['sschreier_productblogpostsettings_headlinenoteaserimage'] %}
+            {% set productCustomFieldTextNoTeaserImage = product.translated.customFields['sschreier_productblogpostsettings_textnoteaserimage'] %}
+
+            {% block layout_search_suggest_result_image_blogposts_custom_before %}{% endblock %}
+
+            {% if productCustomFieldHeadlineNoTeaserImage or productCustomFieldTextNoTeaserImage %}
+                <div class="col-auto invisible">
+                    <div class="search-suggest-product-image-container"></div>
+                </div>
+            {% else %}
+               {{ parent() }}
+            {% endif %}
+
+            {% block layout_search_suggest_result_image_blogposts_custom_after %}{% endblock %}
+        {% else %}
+            {% block layout_search_suggest_result_image_blogposts_custom_default_before %}{% endblock %}
+
+            {{ parent() }}
+
+            {% block layout_search_suggest_result_image_blogposts_custom_default_after %}{% endblock %}
+        {% endif %}
+    {% endif %}
+
+    {% block layout_search_suggest_result_image_blogposts_after %}{% endblock %}
+{% endblock %}
+
 {% block layout_search_suggest_result_price %}
     {% block layout_search_suggest_result_price_blogposts_before %}{% endblock %}
 

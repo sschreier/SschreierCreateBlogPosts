@@ -13,7 +13,7 @@
         {% set cmsPageClasses = ('cms-page ' ~ page.cmsPage.cssClass|striptags)|trim %}
 
         {% block cms_content_blogposts_custom %}
-            <article itemprop="article" itemscope itemtype="https://schema.org/BlogPosting">
+            <article itemscope itemtype="https://schema.org/BlogPosting">
                 <div class="{{ cmsPageClasses }}">
                     {% block page_content_blocks %}
                         {% sw_include "@Storefront/storefront/page/content/detail.html.twig" with {'cmsPage': page.cmsPage} %}

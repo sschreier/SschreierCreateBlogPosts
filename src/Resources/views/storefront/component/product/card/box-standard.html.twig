@@ -1,5 +1,95 @@
 {% sw_extends '@Storefront/storefront/component/product/card/box-standard.html.twig' %}
 
+{% block component_product_box_image %}
+    {% block component_product_box_image_blogposts_before %}{% endblock %}
+
+    {% if not(product.translated.customFields['sschreier_productblogpostsettings_isblogpost']) %}
+        {% block component_product_box_image_blogposts_default_before %}{% endblock %}
+
+        {{ parent() }}
+
+        {% block component_product_box_image_blogposts_default_after %}{% endblock %}
+    {% else %}
+        {% if config('SschreierCreateBlogPosts.config.showTeaserImagesOfBlogPosts') %}
+            {% if not(product.cover.media) %}
+                {% set productCustomFieldHeadlineNoTeaserImage = product.translated.customFields['sschreier_productblogpostsettings_headlinenoteaserimage'] %}
+                {% set productCustomFieldTextNoTeaserImage = product.translated.customFields['sschreier_productblogpostsettings_textnoteaserimage'] %}
+
+                {% if productCustomFieldHeadlineNoTeaserImage or productCustomFieldTextNoTeaserImage %}
+                    <div class="product-image-outer-wrapper">
+                        {% block component_product_box_image_blogposts_custom_before %}{% endblock %}
+
+                        {{ parent() }}
+
+                        {% block component_product_box_image_blogposts_custom_after %}{% endblock %}
+                    </div>
+                {% else %}
+                    {{ parent() }}
+                {% endif %}
+            {% else %}
+                {% block component_product_box_image_blogposts_custom_default_before %}{% endblock %}
+
+                {{ parent() }}
+
+                {% block component_product_box_image_blogposts_custom_default_after %}{% endblock %}
+            {% endif %}
+        {% else %}
+            {% block component_product_box_image_blogposts_custom_hidden_before %}{% endblock %}
+
+            <div class="product-image-wrapper-hidden"></div>
+
+            {% block component_product_box_image_blogposts_custom_hidden_after %}{% endblock %}
+        {% endif %}
+    {% endif %}
+
+    {% block component_product_box_image_blogposts_after %}{% endblock %}
+{% endblock %}
+
+{% block component_product_box_image_placeholder %}
+    {% block component_product_box_image_placeholder_blogposts_before %}{% endblock %}
+
+    {% if not(product.translated.customFields['sschreier_productblogpostsettings_isblogpost']) %}
+        {% block component_product_box_image_placeholder_blogposts_default_before %}{% endblock %}
+
+        {{ parent() }}
+
+        {% block component_product_box_image_placeholder_blogposts_default_after %}{% endblock %}
+    {% else %}
+        {% set productCustomFieldHeadlineNoTeaserImage = product.translated.customFields['sschreier_productblogpostsettings_headlinenoteaserimage'] %}
+        {% set productCustomFieldTextNoTeaserImage = product.translated.customFields['sschreier_productblogpostsettings_textnoteaserimage'] %}
+
+        {% if productCustomFieldHeadlineNoTeaserImage or productCustomFieldTextNoTeaserImage %}
+            <div class="blog-post-placeholder">
+                {% block component_product_box_image_placeholder_blogposts_custom_background %}
+                    <div class="blog-post-placeholder-background"></div>
+                {% endblock %}
+                {% block component_product_box_image_placeholder_blogposts_custom_content %}
+                    <div class="blog-post-placeholder-content{% if config('SschreierCreateBlogPosts.config.alignmentOfContentNoTeaserImage') === "alignLeft" %} text-align-left{% elseif config('SschreierCreateBlogPosts.config.alignmentOfContentNoTeaserImage') === "alignCenter" %} text-align-center{% elseif config('SschreierCreateBlogPosts.config.alignmentOfContentNoTeaserImage') === "alignRight" %} text-align-right{% endif %}">
+                        {% block component_product_box_image_placeholder_blogposts_custom_content_headline %}
+                            {% if productCustomFieldHeadlineNoTeaserImage %}
+                                <div class="blog-post-placeholder-content-headline">
+                                    {{ productCustomFieldHeadlineNoTeaserImage }}
+                                </div>
+                            {% endif %}
+                        {% endblock %}
+                        {% block component_product_box_image_placeholder_blogposts_custom_content_text %}
+                            {% if productCustomFieldTextNoTeaserImage %}
+                                <div class="blog-post-placeholder-content-text">
+                                    {{ productCustomFieldTextNoTeaserImage }}
+                                </div>
+                            {% endif %}
+                        {% endblock %}
+                    </div>
+                {% endblock %}
+            </div>
+        {% else %}
+            {{ parent() }}
+        {% endif %}
+    {% endif %}
+
+    {% block component_product_box_image_placeholder_blogposts_after %}{% endblock %}
+{% endblock %}
+
 {% block component_product_box_wishlist_action %}
     {% block component_product_box_wishlist_action_blogposts_before %}{% endblock %}
 

@@ -6,6 +6,16 @@
       }
     }
 
+    .cms-element-product-name {
+      width: 100%;
+
+      .product-detail-name {
+        -ms-hyphens: auto;
+        -webkit-hyphens: auto;
+        hyphens: auto;
+      }
+    }
+
     .product-detail-review-teaser {
       .product-detail-review-teaser-btn {
         margin-bottom: 1rem;

@@ -11,6 +11,15 @@ use Shopware\Core\Framework\Plugin\Context\UninstallContext;
 
 class SschreierCreateBlogPosts extends Plugin
 {
+    const PLUGIN_CONFIG_VARS = [
+        'opacityNoTeaserImage',
+        'paddingNoTeaserImage',
+        'headlineNoTeaserImageFontSize',
+        'headlineNoTeaserImageLineHeight',
+        'textNoTeaserImageFontSize',
+        'textNoTeaserImageLineHeight',
+        'textNoTeaserImageLineClamp',
+    ];
     const CUSTOM_FIELD_SET_PRODUCT_TECHNICAL_NAME = 'sschreier_productblogpostsettings';
     const CUSTOM_FIELD_SET_CATEGORY_TECHNICAL_NAME = 'sschreier_categoryblogpostsettings';
 

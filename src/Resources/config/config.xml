@@ -93,11 +93,125 @@
         <component name="sw-snippet-field">
             <name>listingBoxProductDetailsSnippetName</name>
             <label>text of the read more button for the blog posts</label>
-            <label lang="de-DE">Text der mehr lesen-Schaltfläche für die Blogbeiträge</label>
+            <label lang="de-DE">Text der mehr erfahren-Schaltfläche für die Blogbeiträge</label>
             <snippet>sschreier.createblogposts.listing.boxProductDetails</snippet>
             <helpText>click on the globe to edit the translations</helpText>
             <helpText lang="de-DE">Klicke auf den Globus, um die Übersetzung zu bearbeiten</helpText>
         </component>
+
+        <input-field type="bool">
+            <name>showTeaserImagesOfBlogPosts</name>
+            <label>show teaser images of the blog posts</label>
+            <label lang="de-DE">Teaserbilder der Blogbeiträge anzeigen</label>
+            <defaultValue>true</defaultValue>
+        </input-field>
+
+        <input-field type="colorpicker">
+            <name>backgroundColorNoTeaserImage</name>
+            <label>background color of the area that will be displayed if no teaser image has been assigned</label>
+            <label lang="de-DE">Hintergrundfarbe des Bereichs, der angezeigt wird, wenn kein Teaserbild zugewiesen wurde</label>
+            <css>sschreier-no-teaser-image-background-color</css>
+            <defaultValue>#e02f2f</defaultValue>
+            <placeholder>#e02f2f</placeholder>
+        </input-field>
+
+        <input-field type="text">
+            <name>opacityNoTeaserImage</name>
+            <label>opacity value of the background color of the area that will be displayed if no teaser image has been assigned</label>
+            <label lang="de-DE">Transparenzwert der Hintergrundfarbe des Bereichs, der angezeigt wird, wenn kein Teaserbild zugewiesen wurde</label>
+            <defaultValue>0.8</defaultValue>
+            <placeholder>0.8</placeholder>
+        </input-field>
+
+        <input-field type="single-select">
+            <name>alignmentOfContentNoTeaserImage</name>
+            <label>alignment of the content of the area that will be displayed if no teaser image has been assigned</label>
+            <label lang="de-DE">Ausrichtung des Inhalts des Bereichs, der angezeigt wird, wenn kein Teaserbild zugewiesen wurde</label>
+            <options>
+                <option>
+                    <id>alignLeft</id>
+                    <name>left</name>
+                    <name lang="de-DE">links</name>
+                </option>
+                <option>
+                    <id>alignCenter</id>
+                    <name>center</name>
+                    <name lang="de-DE">mittig</name>
+                </option>
+                <option>
+                    <id>alignRight</id>
+                    <name>right</name>
+                    <name lang="de-DE">rechts</name>
+                </option>
+            </options>
+            <defaultValue>alignCenter</defaultValue>
+        </input-field>
+
+        <input-field type="int">
+            <name>paddingNoTeaserImage</name>
+            <label>padding value in pixels of the area that will be displayed if no teaser image has been assigned</label>
+            <label lang="de-DE">Innenabstand des Bereichs in Pixeln, der angezeigt wird, wenn kein Teaserbild zugewiesen wurde</label>
+            <defaultValue>25</defaultValue>
+            <placeholder>25</placeholder>
+        </input-field>
+
+        <input-field type="colorpicker">
+            <name>headlineNoTeaserImageColor</name>
+            <label>color of the headline in the area that will be displayed if no teaser image has been assigned</label>
+            <label lang="de-DE">Farbe der Überschrift in dem Bereich, der angezeigt wird, wenn kein Teaserbild zugewiesen wurde</label>
+            <css>sschreier-headline-no-teaser-image-color</css>
+            <defaultValue>#ffffff</defaultValue>
+            <placeholder>#ffffff</placeholder>
+        </input-field>
+
+        <input-field type="int">
+            <name>headlineNoTeaserImageFontSize</name>
+            <label>font size of the headline in the area that will be displayed if no teaser image has been assigned</label>
+            <label lang="de-DE">Schriftgröße der Überschrift in dem Bereich, der angezeigt wird, wenn kein Teaserbild zugewiesen wurde</label>
+            <defaultValue>18</defaultValue>
+            <placeholder>18</placeholder>
+        </input-field>
+
+        <input-field type="int">
+            <name>headlineNoTeaserImageLineHeight</name>
+            <label>line height of the headline in the area that will be displayed if no teaser image has been assigned</label>
+            <label lang="de-DE">Zeilenhöhe der Überschrift in dem Bereich, der angezeigt wird, wenn kein Teaserbild zugewiesen wurde</label>
+            <defaultValue>22</defaultValue>
+            <placeholder>22</placeholder>
+        </input-field>
+
+        <input-field type="colorpicker">
+            <name>colorTextNoTeaserImage</name>
+            <label>color of the text in the area that will be displayed if no teaser image has been assigned</label>
+            <label lang="de-DE">Farbe des Textes in dem Bereich, der angezeigt wird, wenn kein Teaserbild zugewiesen wurde</label>
+            <css>sschreier-text-no-teaser-image-color</css>
+            <defaultValue>#ffffff</defaultValue>
+            <placeholder>#ffffff</placeholder>
+        </input-field>
+
+        <input-field type="int">
+            <name>textNoTeaserImageFontSize</name>
+            <label>font size of the text in the area that will be displayed if no teaser image has been assigned</label>
+            <label lang="de-DE">Schriftgröße des Textes in dem Bereich, der angezeigt wird, wenn kein Teaserbild zugewiesen wurde</label>
+            <defaultValue>14</defaultValue>
+            <placeholder>14</placeholder>
+        </input-field>
+
+        <input-field type="int">
+            <name>textNoTeaserImageLineHeight</name>
+            <label>line height of the text in the area that will be displayed if no teaser image has been assigned</label>
+            <label lang="de-DE">Zeilenhöhe des Textes in dem Bereich, der angezeigt wird, wenn kein Teaserbild zugewiesen wurde</label>
+            <defaultValue>18</defaultValue>
+            <placeholder>18</placeholder>
+        </input-field>
+
+        <input-field type="int">
+            <name>textNoTeaserImageLineClamp</name>
+            <label>number of lines from which the text will be truncated</label>
+            <label lang="de-DE">Anzahl an Zeilen, ab denen der Text abgeschnitten wird</label>
+            <defaultValue>3</defaultValue>
+            <placeholder>3</placeholder>
+        </input-field>
     </card>
 
     <card>
