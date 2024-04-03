@@ -23,34 +23,37 @@
     {% set customFields = product.translated.customFields %}
     {% set isBlogPost = customFields['sschreier_productblogpostsettings_isblogpost'] %}
 
-    {% block element_product_description_reviews_tabs_navigation_review_blogposts_inner %}
-        {% if config('core.listing.showReview') %}
-            <li class="nav-item">
-                <a class="nav-link active product-detail-tab-navigation-link review-tab"
-                    id="{{ reviewTabId }}"
-                    data-bs-toggle="tab"
-                    {# @deprecated tag:v6.6.0 - Registering plugin on selector "data-offcanvas-tabs" is deprecated. Use "data-off-canvas-tabs" instead #}
-                    {% if feature('v6.6.0.0') %}
-                       data-off-canvas-tabs="true"
-                    {% else %}
-                       data-offcanvas-tabs="true"
-                    {% endif %}
-                    href="{{ reviewTabHref }}"
-                    role="tab"
-                    aria-controls="{{ reviewTabContent }}"
-                    aria-selected="true">
-                    {% if isBlogPost %}
-                        {{ "sschreier.createblogposts.detail.tabsReview"|trans|sw_sanitize }}
-                    {% else %}
-                        {{ "detail.tabsReview"|trans|sw_sanitize }}
-                    {% endif %}
-                    <span class="product-detail-tab-navigation-icon">
-                        {% sw_icon 'arrow-medium-right' style {'pack':'solid'} %}
-                    </span>
-                </a>
-            </li>
-        {% endif %}
-    {% endblock %}
+    {% if not(isBlogPost) %}
+        {% block element_product_description_reviews_tabs_navigation_review_blogposts_default_before %}{% endblock %}
+
+        {{ parent() }}
+
+        {% block element_product_description_reviews_tabs_navigation_review_blogposts_default_after %}{% endblock %}
+    {% else %}    
+        {% block element_product_description_reviews_tabs_navigation_review_blogposts_inner %}
+            {% if config('core.listing.showReview') %}
+                <li class="nav-item">
+                    <a class="nav-link active product-detail-tab-navigation-link review-tab"
+                        id="{{ reviewTabId }}"
+                        data-bs-toggle="tab"
+                        data-off-canvas-tabs="true"
+                        href="{{ reviewTabHref }}"
+                        role="tab"
+                        aria-controls="{{ reviewTabContent }}"
+                        aria-selected="true">
+                        {% if isBlogPost %}
+                            {{ "sschreier.createblogposts.detail.tabsReview"|trans|sw_sanitize }}
+                        {% else %}
+                            {{ "detail.tabsReview"|trans|sw_sanitize }}
+                        {% endif %}
+                        <span class="product-detail-tab-navigation-icon">
+                            {% sw_icon 'arrow-medium-right' style {'pack':'solid'} %}
+                        </span>
+                    </a>
+                </li>
+            {% endif %}
+        {% endblock %}
+    {% endif %}
 {% endblock %}
 
 {% block element_product_description_reviews_tabs_content_description %}

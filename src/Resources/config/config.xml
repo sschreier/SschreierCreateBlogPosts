@@ -111,8 +111,8 @@
             <label>background color of the area that will be displayed if no teaser image has been assigned</label>
             <label lang="de-DE">Hintergrundfarbe des Bereichs, der angezeigt wird, wenn kein Teaserbild zugewiesen wurde</label>
             <css>sschreier-no-teaser-image-background-color</css>
-            <defaultValue>#e02f2f</defaultValue>
-            <placeholder>#e02f2f</placeholder>
+            <defaultValue>#004080</defaultValue>
+            <placeholder>#004080</placeholder>
         </input-field>
 
         <input-field type="text">
