@@ -36,7 +36,12 @@
                     <a class="nav-link active product-detail-tab-navigation-link review-tab"
                         id="{{ reviewTabId }}"
                         data-bs-toggle="tab"
-                        data-off-canvas-tabs="true"
+                        {# @deprecated tag:v6.6.0 - Registering plugin on selector "data-offcanvas-tabs" is deprecated. Use "data-off-canvas-tabs" instead #}
+                        {% if feature('v6.6.0.0') %}
+                           data-off-canvas-tabs="true"
+                        {% else %}
+                           data-offcanvas-tabs="true"
+                        {% endif %}
                         href="{{ reviewTabHref }}"
                         role="tab"
                         aria-controls="{{ reviewTabContent }}"
