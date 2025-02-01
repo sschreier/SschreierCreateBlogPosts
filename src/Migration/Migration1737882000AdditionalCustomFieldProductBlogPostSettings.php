@@ -17,7 +17,7 @@ use Shopware\Core\Framework\Migration\MigrationStep;
 use Shopware\Core\Framework\Uuid\Uuid;
 use Shopware\Core\System\CustomField\CustomFieldTypes;
 
-final class Migration1708974000AdditionalCustomFieldProductBlogPostSettings extends MigrationStep
+final class Migration1737882000AdditionalCustomFieldProductBlogPostSettings extends MigrationStep
 {
     use InheritanceUpdaterTrait;
 
@@ -25,7 +25,7 @@ final class Migration1708974000AdditionalCustomFieldProductBlogPostSettings exte
 
     public function getCreationTimestamp(): int
     {
-        return 1708974000;
+        return 1737882000;
     }
 
     /**
@@ -37,7 +37,6 @@ final class Migration1708974000AdditionalCustomFieldProductBlogPostSettings exte
         $customFieldSetId = $this->getCustomFieldSetId($connection, self::CUSTOM_FIELD_SET_TECHNICAL_NAME);
 
         $this->createCustomFieldHeadlineNoTeaserImage($connection, $customFieldSetId);
-        $this->createCustomFieldTextNoTeaserImage($connection, $customFieldSetId);
     }
 
     public function updateDestructive(Connection $connection): void
@@ -59,26 +58,9 @@ final class Migration1708974000AdditionalCustomFieldProductBlogPostSettings exte
         $customFieldProductHeadlineNoTeaserImageStmt->executeStatement(
             [
                 'id' => $customFieldId,
-                'name' => self::CUSTOM_FIELD_SET_TECHNICAL_NAME . '_headlinenoteaserimage',
-                'fieldType' => CustomFieldTypes::TEXT,
-                'config' => '{"label": {"de-DE": "Überschrift in dem Bereich, der angezeigt wird, wenn kein Teaserbild zugewiesen wurde", "en-GB": "headline in the area that will be displayed if no teaser image has been assigned"}, "componentName": "sw-field", "customFieldType": "text", "customFieldPosition": 2, "type": "text"}',
-                'set_id' => $customFieldSetId,
-                'created_at' => self::getDateTimeValue(),
-            ],
-        );
-    }
-
-    protected function createCustomFieldTextNoTeaserImage(Connection $connection, string $customFieldSetId): void
-    {
-        $customFieldId = Uuid::randomBytes();
-
-        $customFieldProductTextNoTeaserImageStmt = $connection->prepare(self::getCustomFieldSql());
-        $customFieldProductTextNoTeaserImageStmt->executeStatement(
-            [
-                'id' => $customFieldId,
-                'name' => self::CUSTOM_FIELD_SET_TECHNICAL_NAME . '_textnoteaserimage',
-                'fieldType' => CustomFieldTypes::TEXT,
-                'config' => '{"label": {"de-DE": "Text in dem Bereich, der angezeigt wird, wenn kein Teaserbild zugewiesen wurde", "en-GB": "text in the area that will be displayed if no teaser image has been assigned"}, "componentName": "sw-field", "customFieldType": "text", "customFieldPosition": 3, "type": "text"}',
+                'name' => self::CUSTOM_FIELD_SET_TECHNICAL_NAME . '_showinrssfeed',
+                'fieldType' => CustomFieldTypes::BOOL,
+                'config' => '{"label": {"de-DE": "im RSS Feed anzeigen", "en-GB": "show in rss feed"}, "componentName": "sw-field", "customFieldType": "checkbox", "customFieldPosition": 4, "type": "checkbox"}',
                 'set_id' => $customFieldSetId,
                 'created_at' => self::getDateTimeValue(),
             ],

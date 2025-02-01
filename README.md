@@ -1,6 +1,6 @@
 # An extension to create blog posts for Shopware 6
 
-An extension to _create blog posts_. The blog post is _created as a product_ and the blog list view as a _category_. The content of the blog post is controlled by a _product page layout_. In addition, the blog post is automatically found in the search and displayed in the search results.
+An extension to _create blog posts_. The blog post is _created as a product_ and the blog list view as a _category_. The content of the blog post is controlled by a _product page layout_. In addition, the blog post is automatically found in the search and displayed in the search results. An _rss feed_ is located at the path `/rss`, so under `http://your-domain.de/rss`.
 
 ## how to use it
 
@@ -50,6 +50,7 @@ An extension to _create blog posts_. The blog post is _created as a product_ and
 - add properties to the blog post in the area "**Properties**" to filter by them, such as the author, a tag or the month and year of the release date
 - switch to the "**Custom fields**" area of the tab "**Specifications**"
 - activate the checkbox "**is a blog post**" in the area "**blog post settings**"
+- activate the checkbox "**show in rss feed**" in the area "**blog post settings**"
 
 #### tab "**Layout**"
 
@@ -63,15 +64,11 @@ An extension to _create blog posts_. The blog post is _created as a product_ and
 
 - assigning **assigned products** to the blog post
 
-#### tab "**Reviews**"
-
-- the **comment feature** for the blog post
-
 ### product page layout settings
 
 - create a **product page layout** under "**Content**" and "**Shopping Experiences**"
 - remove the cms block **Image gallery and buy box** 
-- remove the cms block **Product description & reviews** if you don't need a rating function for the blog post
+- remove the cms block **Product description & reviews**
 - remove the cms block **Cross Selling** if you don't want to display assigned products
 
 #### example 1: all images assigned to the blog post are displayed in an image gallery, followed by the content of the blog post, which is located in the field "Description"
@@ -109,53 +106,22 @@ An extension to _create blog posts_. The blog post is _created as a product_ and
 
 ## Possible Configurations for the blog post detail page
 - select the release date format
-
-## Possible Configurations for the comment area on the blog post detail page
 - set the text before the name of the author via snippet
-- set the text of the tab via snippet
-- set the text of the title of the teaser via snippet
-- set the text of the title of the teaser if a comment has already been made via snippet
-- set the text of the text of the teaser via snippet
-- set the text of the text of the teaser if a comment has already been made via snippet
-- set the text of the button to write a comment via snippet
-- set the text of the button to edit a comment via snippet
-- set the text of the button to show the comments via snippet
-- set the text of the switch for displaying comments in the current language via snippet
-- set the text of the description on the login form via snippet
-- set the text of the link for new customers on the login form via snippet
-- set the text of the label of the comment input field via snippet
-- set the text of the success message after the comment has been submitted via snippet
-- set the text of the success message after the comment has been changed via snippet
-- set the text of the error message if the comment could not be saved via snippet
-- set the text of the info message that the comment has not yet been approved via snippet
-- set the text of the info message that there are no comments yet via snippet
-- set the text before the author of a comment via snippet
-- set the text before the date of a comment via snippet
-- set the text before replying to a comment via snippet
+
+## Possible Configurations for the rss feed
+- set a custom url of the blog post category
+- set a custom language abbreviation
+- set the title of the rss feed via snippet
+- set the description of the rss feed via snippet
+- set the copyright notice of the rss feed via snippet
+- set the number of characters from which the description of a blog post should be truncated
 
 ## Available snippets
 - sschreier.createblogposts.listing.boxProductDetails
 - sschreier.createblogposts.detail.textBeforeManufacturerName
-- sschreier.createblogposts.detail.tabsReview
-- sschreier.createblogposts.detail.reviewTeaserTitle
-- sschreier.createblogposts.detail.reviewExistsTeaserTitle
-- sschreier.createblogposts.detail.reviewTeaserText
-- sschreier.createblogposts.detail.reviewExistsTeaserText
-- sschreier.createblogposts.detail.reviewTeaserButton
-- sschreier.createblogposts.detail.reviewExistsTeaserButton
-- sschreier.createblogposts.detail.reviewTeaserButtonHide
-- sschreier.createblogposts.detail.reviewLanguageFilterLabel
-- sschreier.createblogposts.detail.reviewLoginDescription
-- sschreier.createblogposts.detail.reviewRegisterLink
-- sschreier.createblogposts.detail.reviewFormContentLabel
-- sschreier.createblogposts.detail.reviewFormSuccessAlert
-- sschreier.createblogposts.detail.reviewFormSuccessUpdateAlert
-- sschreier.createblogposts.detail.reviewFormErrorAlert
-- sschreier.createblogposts.detail.reviewNotPublicYetAlert
-- sschreier.createblogposts.detail.reviewListEmpty
-- sschreier.createblogposts.detail.reviewItemAuthor
-- sschreier.createblogposts.detail.reviewItemDate
-- sschreier.createblogposts.detail.reviewCommentLabel
+- sschreier.createblogposts.rssfeed.title
+- sschreier.createblogposts.rssfeed.description
+- sschreier.createblogposts.rssfeed.copyright
 
 ## How to install the extension
 ### via console (recommended)
@@ -212,70 +178,46 @@ bin/console plugin:install --activate SschreierCreateBlogPosts
 
 ![blog post detail page](https://www.sebastianschreier.de/plugins/SschreierCreateBlogPosts/SschreierCreateBlogPosts-Image2.jpg)
 
-### comment area on the blog post detail page
-
-![comment area on the blog post detail page](https://www.sebastianschreier.de/plugins/SschreierCreateBlogPosts/SschreierCreateBlogPosts-Image3.jpg)
-
-### comment area on the blog post detail page
-
-![comment area on the blog post detail page](https://www.sebastianschreier.de/plugins/SschreierCreateBlogPosts/SschreierCreateBlogPosts-Image4.jpg)
-
-### comment area on the blog post detail page
-
-![comment area on the blog post detail page](https://www.sebastianschreier.de/plugins/SschreierCreateBlogPosts/SschreierCreateBlogPosts-Image5.jpg)
-
-### comment area on the blog post detail page
-
-![comment area on the blog post detail page](https://www.sebastianschreier.de/plugins/SschreierCreateBlogPosts/SschreierCreateBlogPosts-Image6.jpg)
-
 ### blog category without release dates and authors
 
-![blog category](https://www.sebastianschreier.de/plugins/SschreierCreateBlogPosts/SschreierCreateBlogPosts-Image7.jpg)
+![blog category](https://www.sebastianschreier.de/plugins/SschreierCreateBlogPosts/SschreierCreateBlogPosts-Image3.jpg)
 
 ### blog post detail page without release date and author
 
-![blog post detail page](https://www.sebastianschreier.de/plugins/SschreierCreateBlogPosts/SschreierCreateBlogPosts-Image8.jpg)
+![blog post detail page](https://www.sebastianschreier.de/plugins/SschreierCreateBlogPosts/SschreierCreateBlogPosts-Image4.jpg)
 
 ### extension configuration part 1
 
-![extension configuration part 1](https://www.sebastianschreier.de/plugins/SschreierCreateBlogPosts/SschreierCreateBlogPosts-Image9.jpg)
+![extension configuration part 1](https://www.sebastianschreier.de/plugins/SschreierCreateBlogPosts/SschreierCreateBlogPosts-Image5.jpg)
 
 ### extension configuration part 2
 
-![extension configuration part 2](https://www.sebastianschreier.de/plugins/SschreierCreateBlogPosts/SschreierCreateBlogPosts-Image10.jpg)
+![extension configuration part 2](https://www.sebastianschreier.de/plugins/SschreierCreateBlogPosts/SschreierCreateBlogPosts-Image6.jpg)
 
 ### extension configuration part 3
 
-![extension configuration part 3](https://www.sebastianschreier.de/plugins/SschreierCreateBlogPosts/SschreierCreateBlogPosts-Image11.jpg)
+![extension configuration part 3](https://www.sebastianschreier.de/plugins/SschreierCreateBlogPosts/SschreierCreateBlogPosts-Image7.jpg)
 
 ### extension configuration part 4
 
-![extension configuration part 4](https://www.sebastianschreier.de/plugins/SschreierCreateBlogPosts/SschreierCreateBlogPosts-Image12.jpg)
+![extension configuration part 4](https://www.sebastianschreier.de/plugins/SschreierCreateBlogPosts/SschreierCreateBlogPosts-Image8.jpg)
 
 ### extension configuration part 5
 
-![extension configuration part 5](https://www.sebastianschreier.de/plugins/SschreierCreateBlogPosts/SschreierCreateBlogPosts-Image13.jpg)
+![extension configuration part 5](https://www.sebastianschreier.de/plugins/SschreierCreateBlogPosts/SschreierCreateBlogPosts-Image9.jpg)
 
 ### extension configuration part 6
 
-![extension configuration part 6](https://www.sebastianschreier.de/plugins/SschreierCreateBlogPosts/SschreierCreateBlogPosts-Image14.jpg)
+![extension configuration part 6](https://www.sebastianschreier.de/plugins/SschreierCreateBlogPosts/SschreierCreateBlogPosts-Image10.jpg)
 
 ### extension configuration part 7
 
-![extension configuration part 7](https://www.sebastianschreier.de/plugins/SschreierCreateBlogPosts/SschreierCreateBlogPosts-Image15.jpg)
-
-### extension configuration part 8
-
-![extension configuration part 8](https://www.sebastianschreier.de/plugins/SschreierCreateBlogPosts/SschreierCreateBlogPosts-Image16.jpg)
-
-### extension configuration part 9
-
-![extension configuration part 9](https://www.sebastianschreier.de/plugins/SschreierCreateBlogPosts/SschreierCreateBlogPosts-Image17.jpg)
+![extension configuration part 7](https://www.sebastianschreier.de/plugins/SschreierCreateBlogPosts/SschreierCreateBlogPosts-Image11.jpg)
 
 ### category custom field in shopware administration
 
-![category custom field in shopware administration](https://www.sebastianschreier.de/plugins/SschreierCreateBlogPosts/SschreierCreateBlogPosts-Image18.jpg)
+![category custom field in shopware administration](https://www.sebastianschreier.de/plugins/SschreierCreateBlogPosts/SschreierCreateBlogPosts-Image12.jpg)
 
 ### product custom field in shopware administration
 
-![product custom field in shopware administration](https://www.sebastianschreier.de/plugins/SschreierCreateBlogPosts/SschreierCreateBlogPosts-Image19.jpg)
+![product custom field in shopware administration](https://www.sebastianschreier.de/plugins/SschreierCreateBlogPosts/SschreierCreateBlogPosts-Image13.jpg)

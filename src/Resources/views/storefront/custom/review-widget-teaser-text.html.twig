@@ -1,9 +1,0 @@
-{% block review_widget_teaser_text_blogposts %}
-    <p>
-        {% if not page.customerReview %}
-            {{ "sschreier.createblogposts.detail.reviewTeaserText"|trans|sw_sanitize }}
-        {% else %}
-            {{ "sschreier.createblogposts.detail.reviewExistsTeaserText"|trans|sw_sanitize }}
-        {% endif %}
-    </p>
-{% endblock %}

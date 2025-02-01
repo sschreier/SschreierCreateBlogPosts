@@ -4,21 +4,18 @@
            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
     <services>
-        <service id="Sschreier\CreateBlogPosts\Core\Twig\CustomerDataHelper" public="true">
-            <argument type="service" id="twig" />
-            <argument type="service" id="customer.repository"/>
-
-            <tag name="twig.extension"/>
-        </service>
-
-        <service id="Sschreier\CreateBlogPosts\Core\Twig\ProductDataHelper" public="true">
-            <argument type="service" id="twig" />
+		<service id="Sschreier\CreateBlogPosts\Storefront\Controller\RssController" public="true">
+			<argument type="service" id="Shopware\Storefront\Page\GenericPageLoader"/>
             <argument type="service" id="product.repository"/>
-
-            <tag name="twig.extension"/>
+            <call method="setContainer">
+                <argument type="service" id="service_container"/>
+            </call>
+            <call method="setTwig">
+                <argument type="service" id="twig"/>
+            </call>
         </service>
 
-        <service id="Sschreier\CreateBlogPosts\Subscriber\ThemeVariablesSubscriber">
+        <service id="Sschreier\CreateBlogPosts\Storefront\Subscriber\ThemeVariablesSubscriber">
             <argument type="service" id="Shopware\Core\System\SystemConfig\SystemConfigService" />
 
             <tag name="kernel.event_subscriber"/>

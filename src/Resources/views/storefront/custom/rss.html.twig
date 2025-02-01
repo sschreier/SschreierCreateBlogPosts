@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>{{ "sschreier.createblogposts.rssfeed.title"|trans|sw_sanitize }}</title>
+        <link>{% if config('SschreierCreateBlogPosts.config.rssFeedUrlBlogPostCategory') %}{{ config('SschreierCreateBlogPosts.config.rssFeedUrlBlogPostCategory') }}{% else %}{{ app.request.schemeAndHttpHost }}{% endif %}</link>
+        <atom:link href="{{ app.request.schemeAndHttpHost }}/rss" rel="self" type="application/rss+xml"/>
+        <description>{{ "sschreier.createblogposts.rssfeed.description"|trans|sw_sanitize }}</description>
+        <language>{% if config('SschreierCreateBlogPosts.config.rssFeedLanguageAbbreviation') %}{{ config('SschreierCreateBlogPosts.config.rssFeedLanguageAbbreviation') }}{% else %}{{ app.request.locale }}{% endif %}</language>
+        <copyright>{{ "sschreier.createblogposts.rssfeed.copyright"|trans|sw_sanitize }}</copyright>
+        {% for result in results %}
+            <item>
+                {% set title = result.translated.metaTitle ?? result.translated.name %}
+                <title>{{ title|striptags|trim }}</title>
+                <link>{{ seoUrl('frontend.detail.page', { productId: result.id }) }}</link>
+                <guid>{{ seoUrl('frontend.detail.page', { productId: result.id }) }}</guid>
+                <pubDate>{{ result.releaseDate|date("D, d M Y H:i:s O") }}</pubDate>
+                {% set description = result.translated.metaDescription ?? result.translated.description %}
+                <description>{{ description|striptags|trim|u.truncate(config('SschreierCreateBlogPosts.config.rssFeedTruncateDescriptionBlogPost'), '...') }}</description>
+            </item>
+        {% endfor %}
+    </channel>
+</rss>

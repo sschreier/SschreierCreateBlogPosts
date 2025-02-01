@@ -1,0 +1,11 @@
+{% sw_extends '@Storefront/storefront/layout/meta.html.twig' %}
+
+{% block layout_head_meta_tags_opengraph %}
+    {% block layout_head_meta_tags_opengraph_blogposts_before %}{% endblock %}
+
+    {{ parent() }}
+
+    {% block layout_head_meta_tags_opengraph_blogposts_custom %}
+        <link rel="alternate" type="application/rss+xml" title="RSS" href="{{ app.request.schemeAndHttpHost }}/rss">
+    {% endblock %}
+{% endblock %}

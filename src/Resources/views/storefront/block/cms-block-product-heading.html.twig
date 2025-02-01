@@ -2,7 +2,9 @@
 
 {% block block_product_heading %}
     {% block block_product_heading_blogposts_before %}{% endblock %}
+
     {{ parent() }}
+
     {% block block_product_heading_blogposts_after %}{% endblock %}
 
     {% set product = page.product %}

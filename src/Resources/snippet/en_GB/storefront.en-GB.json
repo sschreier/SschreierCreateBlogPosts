@@ -5,27 +5,12 @@
                 "boxProductDetails": "Read more"
             },
             "detail": {
-                "textBeforeManufacturerName": "from:",
-                "tabsReview": "Show comments",
-                "reviewTeaserTitle": "Leave a comment!",
-                "reviewExistsTeaserTitle": "You have already commented this blog post!",
-                "reviewTeaserText": "Share your opinion with others.",
-                "reviewExistsTeaserText": "Would you like to edit your comment?",
-                "reviewTeaserButton": "Write comment",
-                "reviewExistsTeaserButton": "Edit comment",
-                "reviewTeaserButtonHide": "Show comments",
-                "reviewLanguageFilterLabel": "Display comments in current language only.",
-                "reviewLoginDescription": "Comments can only be submitted while being logged in. Please enter your login details below.",
-                "reviewRegisterLink": "New customer?",
-                "reviewFormContentLabel": "Your comment",
-                "reviewFormSuccessAlert": "Thank you for submitting your comment. We will examine the comment and eventually unlock it, please be patient.",
-                "reviewFormSuccessUpdateAlert": "Thank you for editing your comment. Changes will be visible as soon as we have unlocked them.",
-                "reviewFormErrorAlert": "An error occurred. Please make sure you filled in all fields correctly.",
-                "reviewNotPublicYetAlert": "Your comment has not been approved yet",
-                "reviewListEmpty": "No comments found. Share your opinion with others.",
-                "reviewItemAuthor": "By:",
-                "reviewItemDate": "On:",
-                "reviewCommentLabel": "Our feedback: "
+                "textBeforeManufacturerName": "from:"
+            },
+            "rssfeed": {
+                "title": "Blog",
+                "description":"",
+                "copyright":""
             }
         }
     }
