@@ -45,6 +45,24 @@
     {% block component_product_box_image_blogposts_after %}{% endblock %}
 {% endblock %}
 
+{% block component_product_box_image_link %}
+    {% block component_product_box_image_link_blogposts_before %}{% endblock %}
+
+    {% if not(product.translated.customFields['sschreier_productblogpostsettings_isblogpost']) %}
+        {% block component_product_box_image_link_blogposts_default_before %}{% endblock %}
+
+        {{ parent() }}
+
+        {% block component_product_box_image_link_blogposts_default_after %}{% endblock %}
+    {% else %}
+        {% block component_product_box_image_link_inner %}
+            {{ parent() }}
+        {% endblock %}   
+    {% endif %}
+
+    {% block component_product_box_image_link_blogposts_after %}{% endblock %}
+{% endblock %}
+
 {% block component_product_box_image_placeholder %}
     {% block component_product_box_image_placeholder_blogposts_before %}{% endblock %}
 
@@ -119,7 +137,7 @@
 {% block component_product_box_name %}
     {% block component_product_box_name_blogposts_before %}{% endblock %}
 
-    <div class="product-info-detail">
+    <div class="product-info-detail{% if product.translated.customFields['sschreier_productblogpostsettings_isblogpost'] %} blog-post-info-detail{% endif %}">
         {% block component_product_box_name_blogposts_inner_before %}{% endblock %}
 
         {{ parent() }}
@@ -156,11 +174,9 @@
             {% if product.translated.customFields['sschreier_productblogpostsettings_isblogpost'] %}
                 <div class="product-action is-blog-post">
                     <div class="d-grid">
-                        <a href="{{ seoUrl('frontend.detail.page', {'productId': id}) }}"
-                           class="btn btn-light"
-                           title="{{ "sschreier.createblogposts.listing.boxProductDetails"|trans|striptags }}">
+                        <span class="btn btn-light">
                             {{ "sschreier.createblogposts.listing.boxProductDetails"|trans|sw_sanitize }}
-                        </a>
+                        </span>
                     </div>
                 </div>
             {% endif %}

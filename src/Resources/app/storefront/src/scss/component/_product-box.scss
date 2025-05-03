@@ -90,6 +90,19 @@ $sschreier-text-no-teaser-image-line-clamp: 3 !default;
           margin-top: 182px;
         }
       }
+
+      .product-info-detail {
+        &.blog-post-info-detail {
+          .product-name {
+            &::before {
+              content: "";
+              position: absolute;
+              inset: 0 0 0 0;
+              z-index: 1;
+            }
+          }
+        }
+      }
     }
   }
 }
@@ -203,6 +216,7 @@ $sschreier-text-no-teaser-image-line-clamp: 3 !default;
                   flex-direction: column;
                   justify-content: center;
                   padding: 0 20px;
+                  max-width: 100%;
 
                   .product-name {
                     height: auto;
@@ -264,6 +278,7 @@ $sschreier-text-no-teaser-image-line-clamp: 3 !default;
                   flex-direction: column;
                   justify-content: center;
                   padding: 0 20px;
+                  max-width: 100%;
 
                   .product-name {
                     height: auto;
@@ -325,6 +340,7 @@ $sschreier-text-no-teaser-image-line-clamp: 3 !default;
                   flex-direction: column;
                   justify-content: center;
                   padding: 0 20px;
+                  max-width: 100%;
 
                   .product-name {
                     height: auto;
