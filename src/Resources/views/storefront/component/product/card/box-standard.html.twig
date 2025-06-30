@@ -45,24 +45,6 @@
     {% block component_product_box_image_blogposts_after %}{% endblock %}
 {% endblock %}
 
-{% block component_product_box_image_link %}
-    {% block component_product_box_image_link_blogposts_before %}{% endblock %}
-
-    {% if not(product.translated.customFields['sschreier_productblogpostsettings_isblogpost']) %}
-        {% block component_product_box_image_link_blogposts_default_before %}{% endblock %}
-
-        {{ parent() }}
-
-        {% block component_product_box_image_link_blogposts_default_after %}{% endblock %}
-    {% else %}
-        {% block component_product_box_image_link_inner %}
-            {{ parent() }}
-        {% endblock %}   
-    {% endif %}
-
-    {% block component_product_box_image_link_blogposts_after %}{% endblock %}
-{% endblock %}
-
 {% block component_product_box_image_placeholder %}
     {% block component_product_box_image_placeholder_blogposts_before %}{% endblock %}
 

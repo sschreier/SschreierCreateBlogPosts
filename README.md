@@ -89,17 +89,19 @@ An extension to _create blog posts_. The blog post is _created as a product_ and
 - select the release date format
 - set the text of the read more button for the blog posts via snippet
 - select, if the teaser images of the blog posts should be shown
-- set the background color of the area that will be displayed if no teaser image has been assigned
-- set the opacity value of the background color of the area that will be displayed if no teaser image has been assigned
-- select the alignment of the content of the area that will be displayed if no teaser image has been assigned
-- set the padding value in pixels of the area that will be displayed if no teaser image has been assigned
-- set the color of the headline in the area that will be displayed if no teaser image has been assigned
-- set the font size of the headline in the area that will be displayed if no teaser image has been assigned
-- set the line height of the headline in the area that will be displayed if no teaser image has been assigned
-- set the color of the text in the area that will be displayed if no teaser image has been assigned
-- set the font size of the text in the area that will be displayed if no teaser image has been assigned
-- set the line height of the text in the area that will be displayed if no teaser image has been assigned
 - set the number of lines from which the text will be truncated
+
+## Possible Configurations for the area that will be displayed if no teaser image has been assigned
+- set the background color
+- set the opacity value of the background color
+- select the alignment of the content
+- set the padding value in pixels
+- set the color of the headline
+- set the font size of the headline
+- set the line height of the headline
+- set the color of the text
+- set the font size of the text
+- set the line height of the text
 
 ## Possible Configurations for the search results
 - select, if the read more button for the blog posts should be shown

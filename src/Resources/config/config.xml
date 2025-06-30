@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/shopware/platform/master/src/Core/System/SystemConfig/Schema/config.xsd">
     <card>
-        <title>Settings for the blog list view</title>
+        <title>settings for the blog list view</title>
         <title lang="de-DE">Einstellungen für die Blog-Listenansicht</title>
 
         <input-field type="single-select">
@@ -106,10 +106,22 @@
             <defaultValue>true</defaultValue>
         </input-field>
 
+        <input-field type="int">
+            <name>textNoTeaserImageLineClamp</name>
+            <label>number of lines from which the text will be truncated</label>
+            <label lang="de-DE">Anzahl an Zeilen, ab denen der Text abgeschnitten wird</label>
+            <defaultValue>3</defaultValue>
+            <placeholder>3</placeholder>
+        </input-field>
+    </card>
+    <card>
+        <title>settings for the area that will be displayed if no teaser image has been assigned</title>
+        <title lang="de-DE">Einstellungen für den Bereich, der angezeigt wird, wenn kein Teaserbild zugewiesen wurde</title>
+
         <input-field type="colorpicker">
             <name>backgroundColorNoTeaserImage</name>
-            <label>background color of the area that will be displayed if no teaser image has been assigned</label>
-            <label lang="de-DE">Hintergrundfarbe des Bereichs, der angezeigt wird, wenn kein Teaserbild zugewiesen wurde</label>
+            <label>background color</label>
+            <label lang="de-DE">Hintergrundfarbe</label>
             <css>sschreier-no-teaser-image-background-color</css>
             <defaultValue>#004080</defaultValue>
             <placeholder>#004080</placeholder>
@@ -117,16 +129,16 @@
 
         <input-field type="text">
             <name>opacityNoTeaserImage</name>
-            <label>opacity value of the background color of the area that will be displayed if no teaser image has been assigned</label>
-            <label lang="de-DE">Transparenzwert der Hintergrundfarbe des Bereichs, der angezeigt wird, wenn kein Teaserbild zugewiesen wurde</label>
+            <label>opacity value of the background color</label>
+            <label lang="de-DE">Transparenzwert der Hintergrundfarbe</label>
             <defaultValue>0.8</defaultValue>
             <placeholder>0.8</placeholder>
         </input-field>
 
         <input-field type="single-select">
             <name>alignmentOfContentNoTeaserImage</name>
-            <label>alignment of the content of the area that will be displayed if no teaser image has been assigned</label>
-            <label lang="de-DE">Ausrichtung des Inhalts des Bereichs, der angezeigt wird, wenn kein Teaserbild zugewiesen wurde</label>
+            <label>alignment of the content</label>
+            <label lang="de-DE">Ausrichtung des Inhalts</label>
             <options>
                 <option>
                     <id>alignLeft</id>
@@ -149,16 +161,16 @@
 
         <input-field type="int">
             <name>paddingNoTeaserImage</name>
-            <label>padding value in pixels of the area that will be displayed if no teaser image has been assigned</label>
-            <label lang="de-DE">Innenabstand des Bereichs in Pixeln, der angezeigt wird, wenn kein Teaserbild zugewiesen wurde</label>
+            <label>padding value in pixels</label>
+            <label lang="de-DE">Innenabstand in Pixeln</label>
             <defaultValue>25</defaultValue>
             <placeholder>25</placeholder>
         </input-field>
 
         <input-field type="colorpicker">
             <name>headlineNoTeaserImageColor</name>
-            <label>color of the headline in the area that will be displayed if no teaser image has been assigned</label>
-            <label lang="de-DE">Farbe der Überschrift in dem Bereich, der angezeigt wird, wenn kein Teaserbild zugewiesen wurde</label>
+            <label>color of the headline</label>
+            <label lang="de-DE">Farbe der Überschrift</label>
             <css>sschreier-headline-no-teaser-image-color</css>
             <defaultValue>#ffffff</defaultValue>
             <placeholder>#ffffff</placeholder>
@@ -166,24 +178,24 @@
 
         <input-field type="int">
             <name>headlineNoTeaserImageFontSize</name>
-            <label>font size of the headline in the area that will be displayed if no teaser image has been assigned</label>
-            <label lang="de-DE">Schriftgröße der Überschrift in dem Bereich, der angezeigt wird, wenn kein Teaserbild zugewiesen wurde</label>
+            <label>font size of the headline</label>
+            <label lang="de-DE">Schriftgröße der Überschrift</label>
             <defaultValue>18</defaultValue>
             <placeholder>18</placeholder>
         </input-field>
 
         <input-field type="int">
             <name>headlineNoTeaserImageLineHeight</name>
-            <label>line height of the headline in the area that will be displayed if no teaser image has been assigned</label>
-            <label lang="de-DE">Zeilenhöhe der Überschrift in dem Bereich, der angezeigt wird, wenn kein Teaserbild zugewiesen wurde</label>
+            <label>line height of the headline</label>
+            <label lang="de-DE">Zeilenhöhe der Überschrift</label>
             <defaultValue>22</defaultValue>
             <placeholder>22</placeholder>
         </input-field>
 
         <input-field type="colorpicker">
             <name>colorTextNoTeaserImage</name>
-            <label>color of the text in the area that will be displayed if no teaser image has been assigned</label>
-            <label lang="de-DE">Farbe des Textes in dem Bereich, der angezeigt wird, wenn kein Teaserbild zugewiesen wurde</label>
+            <label>color of the text</label>
+            <label lang="de-DE">Farbe des Textes</label>
             <css>sschreier-text-no-teaser-image-color</css>
             <defaultValue>#ffffff</defaultValue>
             <placeholder>#ffffff</placeholder>
@@ -191,31 +203,23 @@
 
         <input-field type="int">
             <name>textNoTeaserImageFontSize</name>
-            <label>font size of the text in the area that will be displayed if no teaser image has been assigned</label>
-            <label lang="de-DE">Schriftgröße des Textes in dem Bereich, der angezeigt wird, wenn kein Teaserbild zugewiesen wurde</label>
+            <label>font size of the text</label>
+            <label lang="de-DE">Schriftgröße des Textes</label>
             <defaultValue>14</defaultValue>
             <placeholder>14</placeholder>
         </input-field>
 
         <input-field type="int">
             <name>textNoTeaserImageLineHeight</name>
-            <label>line height of the text in the area that will be displayed if no teaser image has been assigned</label>
-            <label lang="de-DE">Zeilenhöhe des Textes in dem Bereich, der angezeigt wird, wenn kein Teaserbild zugewiesen wurde</label>
+            <label>line height of the text</label>
+            <label lang="de-DE">Zeilenhöhe des Textes</label>
             <defaultValue>18</defaultValue>
             <placeholder>18</placeholder>
-        </input-field>
-
-        <input-field type="int">
-            <name>textNoTeaserImageLineClamp</name>
-            <label>number of lines from which the text will be truncated</label>
-            <label lang="de-DE">Anzahl an Zeilen, ab denen der Text abgeschnitten wird</label>
-            <defaultValue>3</defaultValue>
-            <placeholder>3</placeholder>
         </input-field>
     </card>
 
     <card>
-        <title>Settings for the search results</title>
+        <title>settings for the search results</title>
         <title lang="de-DE">Einstellungen für die Suchergebnisse</title>
 
         <input-field type="bool">
@@ -227,7 +231,7 @@
     </card>
 
     <card>
-        <title>Settings for the blog post detail page</title>
+        <title>settings for the blog post detail page</title>
         <title lang="de-DE">Einstellungen für die Blogbeitragsdetailseite</title>
 
         <input-field type="single-select">
@@ -270,7 +274,7 @@
     </card>
 
     <card>
-        <title>Settings for the rss feed</title>
+        <title>settings for the rss feed</title>
         <title lang="de-DE">Einstellungen für den RSS Feed</title>
 
         <input-field type="text">

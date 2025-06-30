@@ -7,11 +7,9 @@
 		<service id="Sschreier\CreateBlogPosts\Storefront\Controller\RssController" public="true">
 			<argument type="service" id="Shopware\Storefront\Page\GenericPageLoader"/>
             <argument type="service" id="product.repository"/>
+
             <call method="setContainer">
                 <argument type="service" id="service_container"/>
-            </call>
-            <call method="setTwig">
-                <argument type="service" id="twig"/>
             </call>
         </service>
 

@@ -1,6 +1,6 @@
 {% sw_extends '@Storefront/storefront/component/product/listing.html.twig' %}
 
-{% if page.header.navigation.active.customFields.sschreier_categoryblogpostsettings_isblogpostcategory %}
+{% if page.category.customFields.sschreier_categoryblogpostsettings_isblogpostcategory %}
     {% set listingColumnsBlogPosts = '' %}
 
     {% if config('SschreierCreateBlogPosts.config.productBoxMobileNumberProductBoxesSideBySide') == 1 %}
@@ -25,7 +25,7 @@
 {% block element_product_listing_wrapper_content %}
     {% block element_product_listing_wrapper_content_blogposts_before %}{% endblock %}
 
-    <div class="cms-element-product-listing-wrapper-inner{% if listingColumnsBlogPosts %} {{ listingColumnsBlogPosts }}{% endif %}{% if page.header.navigation.active.customFields.sschreier_categoryblogpostsettings_isblogpostcategory %} is-blog-post-category{% else %} is-not-blog-post-category{% endif %}">
+    <div class="cms-element-product-listing-wrapper-inner{% if listingColumnsBlogPosts %} {{ listingColumnsBlogPosts }}{% endif %}{% if page.category.customFields.sschreier_categoryblogpostsettings_isblogpostcategory %} is-blog-post-category{% else %} is-not-blog-post-category{% endif %}">
         {% block element_product_listing_wrapper_content_blogposts_inner_before %}{% endblock %}
 
         {{ parent() }}

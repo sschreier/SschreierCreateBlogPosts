@@ -54,8 +54,8 @@ final class Migration1737882000AdditionalCustomFieldProductBlogPostSettings exte
     {
         $customFieldId = Uuid::randomBytes();
 
-        $customFieldProductHeadlineNoTeaserImageStmt = $connection->prepare(self::getCustomFieldSql());
-        $customFieldProductHeadlineNoTeaserImageStmt->executeStatement(
+        $connection->executeStatement(
+            self::getCustomFieldSql(),
             [
                 'id' => $customFieldId,
                 'name' => self::CUSTOM_FIELD_SET_TECHNICAL_NAME . '_showinrssfeed',
@@ -69,7 +69,7 @@ final class Migration1737882000AdditionalCustomFieldProductBlogPostSettings exte
 
     public static function getCustomFieldSql(): string
     {
-        return <<<'SQL'
+        return <<<SQL
                 INSERT INTO `custom_field` (`id`, `name`, `type`, `config`, `active`, `set_id`, `created_at`, `updated_at`, `allow_customer_write`) VALUES
                 (:id, :name, :fieldType, :config, 1, :set_id, :created_at, NULL, 1);
             SQL;
