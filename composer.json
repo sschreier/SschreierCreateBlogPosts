@@ -1,7 +1,7 @@
 {
     "name": "sschreier/sschreiercreateblogposts",
     "description": "create blog posts",
-    "version": "1.2.0",
+    "version": "1.2.1",
     "type": "shopware-platform-plugin",
     "license": "GPL-3.0-or-later",
     "authors": [
@@ -27,12 +27,12 @@
             "en-GB": "The extension can be used to create blog posts. The blog post is created as a product and the blog list view as a category. The content of the blog post is controlled by a product page layout. In addition, the blog post is automatically found in the search and displayed in the search results. An rss feed is located at the path /rss, so under http://your-domain.de/rss."
         },
         "manufacturerLink": {
-            "de-DE": "https://www.sebastianschreier.de",
-            "en-GB": "https://www.sebastianschreier.de"
+            "de-DE": "https://www.web-solutions-dresden.de",
+            "en-GB": "https://www.web-solutions-dresden.de"
         },
         "supportLink": {
-            "de-DE": "https://www.sebastianschreier.de",
-            "en-GB": "https://www.sebastianschreier.de"
+            "de-DE": "https://www.web-solutions-dresden.de",
+            "en-GB": "https://www.web-solutions-dresden.de"
         }
     },
     "autoload": {

@@ -183,52 +183,52 @@ bin/console plugin:install --activate SschreierCreateBlogPosts
 
 ### blog category without teaser images
 
-![blog category](https://www.sebastianschreier.de/plugins/SschreierCreateBlogPosts/SschreierCreateBlogPosts-Image1.jpg)
+![blog category](https://www.web-solutions-dresden.de/plugins/SschreierCreateBlogPosts/SschreierCreateBlogPosts-Image1.jpg)
 
 ### blog post detail page
 
-![blog post detail page](https://www.sebastianschreier.de/plugins/SschreierCreateBlogPosts/SschreierCreateBlogPosts-Image2.jpg)
+![blog post detail page](https://www.web-solutions-dresden.de/plugins/SschreierCreateBlogPosts/SschreierCreateBlogPosts-Image2.jpg)
 
 ### blog category without release dates and authors
 
-![blog category](https://www.sebastianschreier.de/plugins/SschreierCreateBlogPosts/SschreierCreateBlogPosts-Image3.jpg)
+![blog category](https://www.web-solutions-dresden.de/plugins/SschreierCreateBlogPosts/SschreierCreateBlogPosts-Image3.jpg)
 
 ### blog post detail page without release date and author
 
-![blog post detail page](https://www.sebastianschreier.de/plugins/SschreierCreateBlogPosts/SschreierCreateBlogPosts-Image4.jpg)
+![blog post detail page](https://www.web-solutions-dresden.de/plugins/SschreierCreateBlogPosts/SschreierCreateBlogPosts-Image4.jpg)
 
 ### extension configuration part 1
 
-![extension configuration part 1](https://www.sebastianschreier.de/plugins/SschreierCreateBlogPosts/SschreierCreateBlogPosts-Image5.jpg)
+![extension configuration part 1](https://www.web-solutions-dresden.de/plugins/SschreierCreateBlogPosts/SschreierCreateBlogPosts-Image5.jpg)
 
 ### extension configuration part 2
 
-![extension configuration part 2](https://www.sebastianschreier.de/plugins/SschreierCreateBlogPosts/SschreierCreateBlogPosts-Image6.jpg)
+![extension configuration part 2](https://www.web-solutions-dresden.de/plugins/SschreierCreateBlogPosts/SschreierCreateBlogPosts-Image6.jpg)
 
 ### extension configuration part 3
 
-![extension configuration part 3](https://www.sebastianschreier.de/plugins/SschreierCreateBlogPosts/SschreierCreateBlogPosts-Image7.jpg)
+![extension configuration part 3](https://www.web-solutions-dresden.de/plugins/SschreierCreateBlogPosts/SschreierCreateBlogPosts-Image7.jpg)
 
 ### extension configuration part 4
 
-![extension configuration part 4](https://www.sebastianschreier.de/plugins/SschreierCreateBlogPosts/SschreierCreateBlogPosts-Image8.jpg)
+![extension configuration part 4](https://www.web-solutions-dresden.de/plugins/SschreierCreateBlogPosts/SschreierCreateBlogPosts-Image8.jpg)
 
 ### extension configuration part 5
 
-![extension configuration part 5](https://www.sebastianschreier.de/plugins/SschreierCreateBlogPosts/SschreierCreateBlogPosts-Image9.jpg)
+![extension configuration part 5](https://www.web-solutions-dresden.de/plugins/SschreierCreateBlogPosts/SschreierCreateBlogPosts-Image9.jpg)
 
 ### extension configuration part 6
 
-![extension configuration part 6](https://www.sebastianschreier.de/plugins/SschreierCreateBlogPosts/SschreierCreateBlogPosts-Image10.jpg)
+![extension configuration part 6](https://www.web-solutions-dresden.de/plugins/SschreierCreateBlogPosts/SschreierCreateBlogPosts-Image10.jpg)
 
 ### extension configuration part 7
 
-![extension configuration part 7](https://www.sebastianschreier.de/plugins/SschreierCreateBlogPosts/SschreierCreateBlogPosts-Image11.jpg)
+![extension configuration part 7](https://www.web-solutions-dresden.de/plugins/SschreierCreateBlogPosts/SschreierCreateBlogPosts-Image11.jpg)
 
 ### category custom field in shopware administration
 
-![category custom field in shopware administration](https://www.sebastianschreier.de/plugins/SschreierCreateBlogPosts/SschreierCreateBlogPosts-Image12.jpg)
+![category custom field in shopware administration](https://www.web-solutions-dresden.de/plugins/SschreierCreateBlogPosts/SschreierCreateBlogPosts-Image12.jpg)
 
 ### product custom field in shopware administration
 
-![product custom field in shopware administration](https://www.sebastianschreier.de/plugins/SschreierCreateBlogPosts/SschreierCreateBlogPosts-Image13.jpg)
+![product custom field in shopware administration](https://www.web-solutions-dresden.de/plugins/SschreierCreateBlogPosts/SschreierCreateBlogPosts-Image13.jpg)
