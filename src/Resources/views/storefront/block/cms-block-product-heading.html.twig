@@ -1,5 +1,15 @@
 {% sw_extends '@Storefront/storefront/block/cms-block-product-heading.html.twig' %}
 
+{% set product = page.product %}
+{% set customFields = product.translated.customFields %}
+{% set isBlogPost = customFields['sschreier_productblogpostsettings_isblogpost'] %}
+{% set releaseDatePatterns = {
+    'dateTimeLongMonth': 'dd. MMMM YYYY HH:mm',
+    'dateLongMonth': 'dd. MMMM YYYY',
+    'dateTime': 'dd.MM.YYYY HH:mm',
+    'date': 'dd.MM.YYYY'
+} %}
+
 {% block block_product_heading %}
     {% block block_product_heading_blogposts_before %}{% endblock %}
 
@@ -7,25 +17,13 @@
 
     {% block block_product_heading_blogposts_after %}{% endblock %}
 
-    {% set product = page.product %}
-    {% set customFields = product.translated.customFields %}
-    {% set isBlogPost = customFields['sschreier_productblogpostsettings_isblogpost'] %}
-
     {% if isBlogPost %}
         {% set manufacturer = block.slots.getSlot('right').data.manufacturer %}
         {% set manufacturerName = manufacturer.translated.name %}
         {% set manufacturerLink = manufacturer.link %}
 
         {% block block_product_heading_blogposts_custom %}
-            {% if config('SschreierCreateBlogPosts.config.productDetailReleaseDatePattern') == "dateTimeLongMonth" %}
-                {% set releaseDatePattern = "dd. MMMM YYYY HH:mm" %}
-            {% elseif config('SschreierCreateBlogPosts.config.productDetailReleaseDatePattern') == "dateLongMonth" %}
-                {% set releaseDatePattern = "dd. MMMM YYYY" %}
-            {% elseif config('SschreierCreateBlogPosts.config.productDetailReleaseDatePattern') == "dateTime" %}
-                {% set releaseDatePattern = "dd.MM.YYYY HH:mm" %}
-            {% elseif config('SschreierCreateBlogPosts.config.productDetailReleaseDatePattern') == "date" %}
-                {% set releaseDatePattern = "dd.MM.YYYY" %}
-            {% endif %}
+            {% set releaseDatePattern = releaseDatePatterns[config('SschreierCreateBlogPosts.config.productDetailReleaseDatePattern')]|default(releaseDatePatterns.dateTimeLongMonth) %}
 
             <div class="row" data-cms-element-id="{{ block.slots.getSlot('left').id }}">
                 <div class="col blog-post-heading-meta-information">
@@ -49,10 +47,6 @@
 
 {% block block_product_heading_product_manufacturer_logo_element %}
     {% block block_product_heading_product_manufacturer_logo_element_blogposts_before %}{% endblock %}
-
-    {% set product = page.product %}
-    {% set customFields = product.translated.customFields %}
-    {% set isBlogPost = customFields['sschreier_productblogpostsettings_isblogpost'] %}
 
     {% if not(isBlogPost) %}
         {% block block_product_heading_product_manufacturer_logo_element_blogposts_default_before %}{% endblock %}

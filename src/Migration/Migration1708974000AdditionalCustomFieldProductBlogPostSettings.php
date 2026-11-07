@@ -12,15 +12,12 @@ namespace Sschreier\CreateBlogPosts\Migration;
 use Doctrine\DBAL\Connection;
 use Doctrine\DBAL\Exception;
 use Shopware\Core\Defaults;
-use Shopware\Core\Framework\Migration\InheritanceUpdaterTrait;
 use Shopware\Core\Framework\Migration\MigrationStep;
 use Shopware\Core\Framework\Uuid\Uuid;
 use Shopware\Core\System\CustomField\CustomFieldTypes;
 
 final class Migration1708974000AdditionalCustomFieldProductBlogPostSettings extends MigrationStep
 {
-    use InheritanceUpdaterTrait;
-
     public const CUSTOM_FIELD_SET_TECHNICAL_NAME = 'sschreier_productblogpostsettings';
 
     public function getCreationTimestamp(): int
@@ -47,19 +44,33 @@ final class Migration1708974000AdditionalCustomFieldProductBlogPostSettings exte
     protected function getCustomFieldSetId(Connection $connection, string $customFieldSetTechnicalName): string
     {
         $sql = 'SELECT `id` FROM `custom_field_set` WHERE `name` = :name';
+        $customFieldSetId = $connection->fetchOne($sql, ['name' => $customFieldSetTechnicalName]);
 
-        return $connection->executeQuery($sql, ['name' => $customFieldSetTechnicalName])->fetchOne();
+        if (!is_string($customFieldSetId)) {
+            throw new \RuntimeException(sprintf(
+                'The custom field set "%s" must exist before its fields can be migrated.',
+                $customFieldSetTechnicalName
+            ));
+        }
+
+        return $customFieldSetId;
     }
 
     protected function createCustomFieldHeadlineNoTeaserImage(Connection $connection, string $customFieldSetId): void
     {
+        $name = self::CUSTOM_FIELD_SET_TECHNICAL_NAME . '_headlinenoteaserimage';
+
+        if ($this->customFieldExistsInSet($connection, $name, $customFieldSetId)) {
+            return;
+        }
+
         $customFieldId = Uuid::randomBytes();
 
         $connection->executeStatement(
             self::getCustomFieldSql(),
             [
                 'id' => $customFieldId,
-                'name' => self::CUSTOM_FIELD_SET_TECHNICAL_NAME . '_headlinenoteaserimage',
+                'name' => $name,
                 'fieldType' => CustomFieldTypes::TEXT,
                 'config' => '{"label": {"de-DE": "Überschrift in dem Bereich, der angezeigt wird, wenn kein Teaserbild zugewiesen wurde", "en-GB": "headline in the area that will be displayed if no teaser image has been assigned"}, "componentName": "sw-field", "customFieldType": "text", "customFieldPosition": 2, "type": "text"}',
                 'set_id' => $customFieldSetId,
@@ -70,13 +81,19 @@ final class Migration1708974000AdditionalCustomFieldProductBlogPostSettings exte
 
     protected function createCustomFieldTextNoTeaserImage(Connection $connection, string $customFieldSetId): void
     {
+        $name = self::CUSTOM_FIELD_SET_TECHNICAL_NAME . '_textnoteaserimage';
+
+        if ($this->customFieldExistsInSet($connection, $name, $customFieldSetId)) {
+            return;
+        }
+
         $customFieldId = Uuid::randomBytes();
 
         $connection->executeStatement(
             self::getCustomFieldSql(),
             [
                 'id' => $customFieldId,
-                'name' => self::CUSTOM_FIELD_SET_TECHNICAL_NAME . '_textnoteaserimage',
+                'name' => $name,
                 'fieldType' => CustomFieldTypes::TEXT,
                 'config' => '{"label": {"de-DE": "Text in dem Bereich, der angezeigt wird, wenn kein Teaserbild zugewiesen wurde", "en-GB": "text in the area that will be displayed if no teaser image has been assigned"}, "componentName": "sw-field", "customFieldType": "text", "customFieldPosition": 3, "type": "text"}',
                 'set_id' => $customFieldSetId,
@@ -89,12 +106,30 @@ final class Migration1708974000AdditionalCustomFieldProductBlogPostSettings exte
     {
         return <<<SQL
                 INSERT INTO `custom_field` (`id`, `name`, `type`, `config`, `active`, `set_id`, `created_at`, `updated_at`, `allow_customer_write`) VALUES
-                (:id, :name, :fieldType, :config, 1, :set_id, :created_at, NULL, 1);
+                (:id, :name, :fieldType, :config, 1, :set_id, :created_at, NULL, 0);
             SQL;
+    }
+
+    private function customFieldExistsInSet(Connection $connection, string $name, string $customFieldSetId): bool
+    {
+        $existingSetId = $connection->fetchOne(
+            'SELECT `set_id` FROM `custom_field` WHERE `name` = :name',
+            ['name' => $name]
+        );
+
+        if ($existingSetId === false) {
+            return false;
+        }
+
+        if (!is_string($existingSetId) || $existingSetId !== $customFieldSetId) {
+            throw new \RuntimeException(sprintf('Custom field "%s" belongs to an unexpected set.', $name));
+        }
+
+        return true;
     }
 
     protected static function getDateTimeValue(): string
     {
-        return (new \DateTime())->format(Defaults::STORAGE_DATE_TIME_FORMAT);
+        return (new \DateTimeImmutable())->format(Defaults::STORAGE_DATE_TIME_FORMAT);
     }
 }

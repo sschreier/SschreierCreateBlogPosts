@@ -1,9 +1,11 @@
 {% sw_extends '@Storefront/storefront/layout/header/search-suggest.html.twig' %}
 
+{% set isBlogPost = product.translated.customFields['sschreier_productblogpostsettings_isblogpost'] %}
+
 {% block layout_search_suggest_result_image %}
     {% block layout_search_suggest_result_image_blogposts_before %}{% endblock %}
 
-    {% if not(product.translated.customFields['sschreier_productblogpostsettings_isblogpost']) %}
+    {% if not isBlogPost %}
         {% block layout_search_suggest_result_image_blogposts_default_before %}{% endblock %}
 
         {{ parent() }}
@@ -40,7 +42,7 @@
 {% block layout_search_suggest_result_price %}
     {% block layout_search_suggest_result_price_blogposts_before %}{% endblock %}
 
-    {% if not(product.translated.customFields['sschreier_productblogpostsettings_isblogpost']) %}
+    {% if not isBlogPost %}
         {% block layout_search_suggest_result_price_blogposts_default_before %}{% endblock %}
 
         {{ parent() }}

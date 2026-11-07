@@ -12,15 +12,12 @@ namespace Sschreier\CreateBlogPosts\Migration;
 use Doctrine\DBAL\Connection;
 use Doctrine\DBAL\Exception;
 use Shopware\Core\Defaults;
-use Shopware\Core\Framework\Migration\InheritanceUpdaterTrait;
 use Shopware\Core\Framework\Migration\MigrationStep;
 use Shopware\Core\Framework\Uuid\Uuid;
 use Shopware\Core\System\CustomField\CustomFieldTypes;
 
 final class Migration1708099200CustomFieldProductBlogPostSettings extends MigrationStep
 {
-    use InheritanceUpdaterTrait;
-
     public const CUSTOM_FIELD_SET_TECHNICAL_NAME = 'sschreier_productblogpostsettings';
 
     public function getCreationTimestamp(): int
@@ -47,6 +44,15 @@ final class Migration1708099200CustomFieldProductBlogPostSettings extends Migrat
 
     protected function createCustomFieldSet(Connection $connection): string
     {
+        $existingId = $connection->fetchOne(
+            'SELECT `id` FROM `custom_field_set` WHERE `name` = :name',
+            ['name' => self::CUSTOM_FIELD_SET_TECHNICAL_NAME]
+        );
+
+        if (is_string($existingId)) {
+            return $existingId;
+        }
+
         $customFieldSetId = Uuid::randomBytes();
 
         $connection->executeStatement(
@@ -65,13 +71,27 @@ final class Migration1708099200CustomFieldProductBlogPostSettings extends Migrat
 
     protected function createCustomField(Connection $connection, string $customFieldSetId): void
     {
+        $name = self::CUSTOM_FIELD_SET_TECHNICAL_NAME . '_isblogpost';
+        $existingSetId = $connection->fetchOne(
+            'SELECT `set_id` FROM `custom_field` WHERE `name` = :name',
+            ['name' => $name]
+        );
+
+        if ($existingSetId !== false) {
+            if (!is_string($existingSetId) || $existingSetId !== $customFieldSetId) {
+                throw new \RuntimeException(sprintf('Custom field "%s" belongs to an unexpected set.', $name));
+            }
+
+            return;
+        }
+
         $customFieldId = Uuid::randomBytes();
 
         $connection->executeStatement(
             self::getCustomFieldSql(),
             [
                 'id' => $customFieldId,
-                'name' => self::CUSTOM_FIELD_SET_TECHNICAL_NAME . '_isblogpost',
+                'name' => $name,
                 'fieldType' => CustomFieldTypes::BOOL,
                 'config' => '{"label": {"de-DE": "Ist ein Blogbeitrag", "en-GB": "is a blog post"}, "componentName": "sw-field", "customFieldType": "checkbox", "customFieldPosition": 1, "type": "checkbox"}',
                 'set_id' => $customFieldSetId,
@@ -80,8 +100,18 @@ final class Migration1708099200CustomFieldProductBlogPostSettings extends Migrat
         );
     }
 
-    protected function createCustomFieldRelation(Connection $connection, $customFieldSetId): void
+    protected function createCustomFieldRelation(Connection $connection, string $customFieldSetId): void
     {
+        $entityName = 'product';
+        $existingRelationId = $connection->fetchOne(
+            'SELECT `id` FROM `custom_field_set_relation` WHERE `set_id` = :set_id AND `entity_name` = :entity_name',
+            ['set_id' => $customFieldSetId, 'entity_name' => $entityName]
+        );
+
+        if (is_string($existingRelationId)) {
+            return;
+        }
+
         $customFieldRelationId = Uuid::randomBytes();
 
         $connection->executeStatement(
@@ -90,7 +120,7 @@ final class Migration1708099200CustomFieldProductBlogPostSettings extends Migrat
                 'id' => $customFieldRelationId,
                 'set_id' => $customFieldSetId,
                 'created_at' => self::getDateTimeValue(),
-                'entity_name' => 'product'
+                'entity_name' => $entityName
             ],
         );
     }
@@ -107,7 +137,7 @@ final class Migration1708099200CustomFieldProductBlogPostSettings extends Migrat
     {
         return <<<SQL
                 INSERT INTO `custom_field` (`id`, `name`, `type`, `config`, `active`, `set_id`, `created_at`, `updated_at`, `allow_customer_write`) VALUES
-                (:id, :name, :fieldType, :config, 1, :set_id, :created_at, NULL, 1);
+                (:id, :name, :fieldType, :config, 1, :set_id, :created_at, NULL, 0);
             SQL;
     }
 
@@ -121,6 +151,6 @@ final class Migration1708099200CustomFieldProductBlogPostSettings extends Migrat
 
     protected static function getDateTimeValue(): string
     {
-        return (new \DateTime())->format(Defaults::STORAGE_DATE_TIME_FORMAT);
+        return (new \DateTimeImmutable())->format(Defaults::STORAGE_DATE_TIME_FORMAT);
     }
 }

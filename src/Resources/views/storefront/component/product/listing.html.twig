@@ -1,31 +1,16 @@
 {% sw_extends '@Storefront/storefront/component/product/listing.html.twig' %}
 
-{% if page.category.customFields.sschreier_categoryblogpostsettings_isblogpostcategory %}
-    {% set listingColumnsBlogPosts = '' %}
-
-    {% if config('SschreierCreateBlogPosts.config.productBoxMobileNumberProductBoxesSideBySide') == 1 %}
-        {% set listingColumnsMobile = 'col-sm-12 ' %}
-    {% else %}
-        {% set listingColumnsMobile = 'col-sm-6 ' %}
-    {% endif %}
-    {% if config('SschreierCreateBlogPosts.config.productBoxTabletNumberProductBoxesSideBySide') == 1 %}
-        {% set listingColumnsTablet = 'col-lg-12 ' %}
-    {% else %}
-        {% set listingColumnsTablet = 'col-lg-4 ' %}
-    {% endif %}
-    {% if config('SschreierCreateBlogPosts.config.productBoxDesktopNumberProductBoxesSideBySide') == 1 %}
-        {% set listingColumnsDesktop = 'col-xl-12' %}
-    {% else %}
-        {% set listingColumnsDesktop = 'col-xl-3' %}
-    {% endif %}
-
-    {% set listingColumnsBlogPosts = (listingColumnsMobile ~ listingColumnsTablet ~ listingColumnsDesktop) %}
-{% endif %}
+{% set isBlogPostCategory = page.category.customFields.sschreier_categoryblogpostsettings_isblogpostcategory %}
+{% set listingColumnsBlogPosts = isBlogPostCategory
+    ? (config('SschreierCreateBlogPosts.config.productBoxMobileNumberProductBoxesSideBySide') == 1 ? 'col-sm-12 ' : 'col-sm-6 ')
+        ~ (config('SschreierCreateBlogPosts.config.productBoxTabletNumberProductBoxesSideBySide') == 1 ? 'col-lg-12 ' : 'col-lg-4 ')
+        ~ (config('SschreierCreateBlogPosts.config.productBoxDesktopNumberProductBoxesSideBySide') == 1 ? 'col-xl-12' : 'col-xl-3')
+    : '' %}
 
 {% block element_product_listing_wrapper_content %}
     {% block element_product_listing_wrapper_content_blogposts_before %}{% endblock %}
 
-    <div class="cms-element-product-listing-wrapper-inner{% if listingColumnsBlogPosts %} {{ listingColumnsBlogPosts }}{% endif %}{% if page.category.customFields.sschreier_categoryblogpostsettings_isblogpostcategory %} is-blog-post-category{% else %} is-not-blog-post-category{% endif %}">
+    <div class="cms-element-product-listing-wrapper-inner{% if listingColumnsBlogPosts %} {{ listingColumnsBlogPosts }}{% endif %}{% if isBlogPostCategory %} is-blog-post-category{% else %} is-not-blog-post-category{% endif %}">
         {% block element_product_listing_wrapper_content_blogposts_inner_before %}{% endblock %}
 
         {{ parent() }}
